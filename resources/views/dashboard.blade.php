@@ -4,7 +4,6 @@
     <title>Dashboard - Telkom Property</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -41,14 +40,13 @@
             margin: 15px 0;
             padding: 10px;
             border-radius: 8px;
-            transition: 0.3s;
         }
 
         .sidebar a:hover {
             background: rgba(255,255,255,0.2);
         }
 
-        /* Main Content */
+        /* Main */
         .main {
             margin-left: 250px;
             padding: 20px;
@@ -78,14 +76,9 @@
             border-radius: 8px;
             text-decoration: none;
             font-size: 14px;
-            transition: 0.3s;
         }
 
-        .login-btn:hover {
-            background: #c00510;
-        }
-
-        /* Cards */
+        /* Cards Statistik */
         .cards {
             display: flex;
             gap: 20px;
@@ -98,11 +91,6 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
         }
 
         .card h4 {
@@ -121,7 +109,7 @@
 
         .property-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -131,13 +119,13 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
             transition: 0.3s;
-            cursor: pointer;
         }
 
         .property-card:hover {
             transform: scale(1.03);
         }
 
+        /* FOTO */
         .property-card img {
             width: 100%;
             height: 180px;
@@ -168,79 +156,69 @@
                 margin-left: 0;
             }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h4>Telkom Property</h4>
-        <a href="#">Dashboard</a>
-        <a href="#">Data Properti</a>
+<div class="sidebar">
+    <h4>Telkom Property</h4>
+    <a href="{{ route('dashboard') }}">Dashboard Overview</a>
+</div>
+
+<div class="main">
+
+    <div class="navbar">
+        <h3>Dashboard Overview</h3>
+        <a href="{{ route('login') }}" class="login-btn">Login</a>
     </div>
 
-    <!-- Main Content -->
-    <div class="main">
-
-        <!-- Navbar -->
-        <div class="navbar">
-            <h3>Dashboard Overview</h3>
-            <a href="{{ route('login') }}" class="login-btn">Login</a>
+    <!-- Statistik -->
+    <div class="cards">
+        <div class="card">
+            <h4>Total Properti</h4>
+            <h2>{{ $properties->count() }}</h2>
         </div>
 
-        <!-- Statistik -->
-        <div class="cards">
-            <div class="card">
-                <h4>Total Properti</h4>
-                <h2>120</h2>
-            </div>
-
-            <div class="card">
-                <h4>Properti Tersedia</h4>
-                <h2>85</h2>
-            </div>
-
-            <div class="card">
-                <h4>Total Transaksi</h4>
-                <h2>230</h2>
-            </div>
+        <div class="card">
+            <h4>Properti Tersedia</h4>
+            <h2>{{ $properties->count() }}</h2>
         </div>
 
-        <!-- Property List -->
-        <div class="property-section">
-            <h3 style="margin-bottom:15px;">Properti Terbaru</h3>
-
-            <div class="property-grid">
-
-                <div class="property-card">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Property">
-                    <div class="info">
-                        <h4>Gedung Perkantoran Jakarta</h4>
-                        <p>Lokasi: Jakarta Selatan</p>
-                    </div>
-                </div>
-
-                <div class="property-card">
-                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Property">
-                    <div class="info">
-                        <h4>Ruko Bandung</h4>
-                        <p>Lokasi: Bandung</p>
-                    </div>
-                </div>
-
-                <div class="property-card">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Property">
-                    <div class="info">
-                        <h4>Gudang Surabaya</h4>
-                        <p>Lokasi: Surabaya</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="card">
+            <h4>Total Transaksi</h4>
+            <h2>230</h2>
         </div>
-
     </div>
+
+    <!-- Property List -->
+    <div class="property-section">
+        <h3 style="margin-bottom:15px;">Properti Terbaru</h3>
+
+        <div class="property-grid">
+
+            @foreach($properties as $property)
+                <a href="{{ route('property.show', $property->id) }}"
+                   style="text-decoration:none;color:inherit;">
+
+                    <div class="property-card">
+
+                        <!-- FOTO DARI DATABASE -->
+                        <img src="{{ asset($property->gambar) }}" alt="Property">
+
+                        <div class="info">
+                            <h4>{{ $property->alamat }}</h4>
+                            <p>Luas Tanah: {{ $property->luas_tanah }}</p>
+                        </div>
+
+                    </div>
+
+                </a>
+            @endforeach
+
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
