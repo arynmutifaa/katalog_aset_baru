@@ -120,9 +120,7 @@ body{
         <button type="submit" class="login-btn">Login</button>
     </form>
 
-    <div class="back-link">
-        <a href="index.html">← Kembali ke Home</a>
-    </div>
+
 </div>
 
 <script>
