@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PropertyDetail;
+use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
@@ -16,5 +17,42 @@ class PropertyController extends Controller
     {
         $property = PropertyDetail::findOrFail($id);
         return view('property-detail', compact('property'));
+    }
+
+    public function create()
+    {
+        return view('property.create');
+    }
+
+    public function store(Request $request)
+    {
+        PropertyDetail::create($request->all());
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Data berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $property = PropertyDetail::findOrFail($id);
+        return view('property.edit', compact('property'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $property = PropertyDetail::findOrFail($id);
+        $property->update($request->all());
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Data berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $property = PropertyDetail::findOrFail($id);
+        $property->delete();
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Data berhasil dihapus');
     }
 }
