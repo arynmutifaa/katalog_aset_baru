@@ -137,7 +137,7 @@ body,html{
 
 <!-- ===== NAVBAR ===== -->
 <div class="navbar">
-    <div class="logo">PT Graha Saran Duta</div>
+    <div class="logo">PT Graha Sarana Duta</div>
     <div class="nav-links">
 
     </div>

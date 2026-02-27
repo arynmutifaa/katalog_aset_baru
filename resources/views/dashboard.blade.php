@@ -19,9 +19,9 @@
             background-color: #f4f6f9;
         }
 
-        /* Sidebar */
+        /* SIDEBAR */
         .sidebar {
-            width: 250px;
+            width: 260px;
             height: 100vh;
             background: #E30613;
             color: white;
@@ -30,43 +30,58 @@
         }
 
         .sidebar h4 {
-            margin-bottom: 30px;
+            text-align: center;   /* JUDUL TENGAH */
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin: 15px 0;
+        .sidebar input,
+        .sidebar select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .sidebar button {
+            width: 100%;
             padding: 10px;
-            border-radius: 8px;
+            background: white;
+            color: #E30613;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        .sidebar a:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Main */
+        /* MAIN */
         .main {
-            margin-left: 250px;
+            margin-left: 260px;
             padding: 20px;
             width: 100%;
         }
 
-        /* Navbar */
+        /* NAVBAR */
         .navbar {
             background: white;
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* JUDUL TENGAH */
             align-items: center;
+            position: relative;
         }
 
         .navbar h3 {
             color: #E30613;
+            font-weight: 600;
         }
 
         .login-btn {
@@ -76,9 +91,12 @@
             border-radius: 8px;
             text-decoration: none;
             font-size: 14px;
+
+            position: absolute; /* TETAP DI KANAN */
+            right: 20px;
         }
 
-        /* Cards Statistik */
+        /* CARDS */
         .cards {
             display: flex;
             gap: 20px;
@@ -102,18 +120,19 @@
             color: #E30613;
         }
 
-        /* Property Section */
+        /* PROPERTY */
         .property-section {
             margin-top: 20px;
         }
 
         .property-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
         }
 
         .property-card {
+            width: 300px;
             background: white;
             border-radius: 12px;
             overflow: hidden;
@@ -125,10 +144,9 @@
             transform: scale(1.03);
         }
 
-        /* FOTO */
         .property-card img {
             width: 100%;
-            height: 180px;
+            height: 160px;
             object-fit: cover;
         }
 
@@ -160,9 +178,32 @@
 </head>
 <body>
 
+<!-- SIDEBAR DENGAN FILTER -->
 <div class="sidebar">
     <h4>Telkom Property</h4>
-    <a href="{{ route('dashboard') }}">Dashboard Overview</a>
+
+    <form method="GET" action="{{ route('dashboard') }}">
+
+        <input type="text" name="search" placeholder="Mencari lokasi...">
+
+        <select name="daerah">
+            <option value="">Semua Daerah</option>
+            <option value="tanggul">Tanggul</option>
+            <option value="pasuruan">Pasuruan</option>
+            <option value="jember">Jember</option>
+            <option value="banyuwangi">Banyuwangi</option>
+            <option value="situbondo">Situbondo</option>
+            <option value="bondowoso">Bondowoso</option>
+            <option value="lumajang">Lumajang</option>
+            <option value="probolinggo">Probolinggo</option>
+            <option value="sidoarjo">Sidoarjo</option>
+            <option value="pandaan">Pandaan</option>
+            <option value="jombang">Jombang</option>
+            <option value="mojokerto">Mojokerto</option>
+        </select>
+
+        <button type="submit">Cari</button>
+    </form>
 </div>
 
 <div class="main">
@@ -175,18 +216,18 @@
     <!-- Statistik -->
     <div class="cards">
         <div class="card">
-            <h4>Total Properti</h4>
+            <h4>Gedung Tersedia</h4>
             <h2>{{ $properties->count() }}</h2>
         </div>
 
         <div class="card">
-            <h4>Properti Tersedia</h4>
+            <h4>Total Tanah Kosong</h4>
             <h2>{{ $properties->count() }}</h2>
         </div>
 
         <div class="card">
-            <h4>Total Transaksi</h4>
-            <h2>230</h2>
+            <h4>Total Property</h4>
+            <h2>1</h2>
         </div>
     </div>
 
@@ -195,26 +236,20 @@
         <h3 style="margin-bottom:15px;">Properti Terbaru</h3>
 
         <div class="property-grid">
-
             @foreach($properties as $property)
                 <a href="{{ route('property.show', $property->id) }}"
                    style="text-decoration:none;color:inherit;">
 
                     <div class="property-card">
-
-                        <!-- FOTO DARI DATABASE -->
                         <img src="{{ asset($property->gambar) }}" alt="Property">
-
                         <div class="info">
-                            <h4>{{ $property->alamat }}</h4>
-                            <p>Luas Tanah: {{ $property->luas_tanah }}</p>
+                            <h4>{{ $property->nama_gedung }}</h4>
+                            <p> {{ $property->alamat }}</p>
                         </div>
-
                     </div>
 
                 </a>
             @endforeach
-
         </div>
     </div>
 

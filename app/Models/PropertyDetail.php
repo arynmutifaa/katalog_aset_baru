@@ -9,6 +9,7 @@ class PropertyDetail extends Model
     protected $table = 'property_details'; // WAJIB karena nama tidak default
 
     protected $fillable = [
+        'nama_gedung',
         'area_id',
         'alamat',
         'luas_tanah',
