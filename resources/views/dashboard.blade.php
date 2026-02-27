@@ -30,7 +30,7 @@
         }
 
         .sidebar h4 {
-            text-align: center;   /* JUDUL TENGAH */
+            text-align: center;
             margin-bottom: 25px;
             font-size: 20px;
             font-weight: 600;
@@ -70,11 +70,11 @@
             background: white;
             padding: 15px 20px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
             display: flex;
-            justify-content: center; /* JUDUL TENGAH */
+            justify-content: center;
             align-items: center;
             position: relative;
         }
@@ -92,8 +92,23 @@
             text-decoration: none;
             font-size: 14px;
 
-            position: absolute; /* TETAP DI KANAN */
+            position: absolute;
             right: 20px;
+        }
+
+        /* SECTION TITLE (SAMA SEPERTI NAVBAR) */
+        .section-title {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .section-title h3 {
+            color: #E30613;
+            font-weight: 600;
         }
 
         /* CARDS */
@@ -121,10 +136,6 @@
         }
 
         /* PROPERTY */
-        .property-section {
-            margin-top: 20px;
-        }
-
         .property-grid {
             display: flex;
             flex-wrap: wrap;
@@ -183,7 +194,6 @@
     <h4>Telkom Property</h4>
 
     <form method="GET" action="{{ route('dashboard') }}">
-
         <input type="text" name="search" placeholder="Mencari lokasi...">
 
         <select name="daerah">
@@ -231,26 +241,27 @@
         </div>
     </div>
 
+    <!-- TITLE BAR BARU -->
+    <div class="section-title">
+        <h3>Daftar Aset Properti JTT</h3>
+    </div>
+
     <!-- Property List -->
-    <div class="property-section">
-        <h3 style="margin-bottom:15px;">Properti Terbaru</h3>
+    <div class="property-grid">
+        @foreach($properties as $property)
+            <a href="{{ route('property.show', $property->id) }}"
+               style="text-decoration:none;color:inherit;">
 
-        <div class="property-grid">
-            @foreach($properties as $property)
-                <a href="{{ route('property.show', $property->id) }}"
-                   style="text-decoration:none;color:inherit;">
-
-                    <div class="property-card">
-                        <img src="{{ asset($property->gambar) }}" alt="Property">
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p> {{ $property->alamat }}</p>
-                        </div>
+                <div class="property-card">
+                    <img src="{{ asset($property->gambar) }}" alt="Property">
+                    <div class="info">
+                        <h4>{{ $property->nama_gedung }}</h4>
+                        <p>{{ $property->alamat }}</p>
                     </div>
+                </div>
 
-                </a>
-            @endforeach
-        </div>
+            </a>
+        @endforeach
     </div>
 
 </div>
