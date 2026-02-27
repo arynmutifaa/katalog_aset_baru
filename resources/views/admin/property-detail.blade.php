@@ -143,7 +143,23 @@
         </div>
     @endif
 
-    
+    <div class="top-buttons">
+        <a href="{{ route('admin.dashboard') }}" class="btn back">Kembali</a>
+
+        <a href="{{ route('property.edit', $property->id) }}" class="btn edit">
+            Edit
+        </a>
+
+        <form action="{{ route('property.destroy', $property->id) }}"
+              method="POST"
+              onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn delete">
+                Hapus
+            </button>
+        </form>
+    </div>
 
     <h2>{{ $property->nama_gedung }}</h2>
     <div class="subtitle">Detail Informasi Aset Gedung</div>

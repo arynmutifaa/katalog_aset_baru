@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyDetail extends Model
 {
-    protected $table = 'property_details'; // WAJIB karena nama tidak default
-
+    protected $table = 'property_details'; 
     protected $fillable = [
         'nama_gedung',
         'area_id',
