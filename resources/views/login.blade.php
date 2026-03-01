@@ -23,7 +23,6 @@ body{
     background: linear-gradient(135deg, #E30613, #99040d);
 }
 
-/* Login Card */
 .login-container{
     background:white;
     padding:40px;
@@ -46,7 +45,6 @@ body{
     margin-bottom:30px;
 }
 
-/* Form */
 .form-group{
     margin-bottom:20px;
     text-align:left;
@@ -63,15 +61,8 @@ body{
     margin-top:6px;
     border-radius:10px;
     border:1px solid #ddd;
-    outline:none;
-    transition:0.3s;
 }
 
-.form-group input:focus{
-    border-color:#edc4c7;
-}
-
-/* Button */
 .login-btn{
     width:100%;
     padding:14px;
@@ -81,21 +72,16 @@ body{
     color:white;
     font-weight:600;
     cursor:pointer;
-    transition:0.3s;
 }
 
 .login-btn:hover{
     background:#b80510;
 }
 
-.back-link{
-    margin-top:15px;
+.error{
+    color:red;
     font-size:13px;
-}
-
-.back-link a{
-    text-decoration:none;
-    color:#E30613;
+    margin-bottom:10px;
 }
 </style>
 </head>
@@ -103,42 +89,36 @@ body{
 <body>
 
 <div class="login-container">
-    <div class="logo">Telkom Property</div>
-    <div class="subtitle">Silakan login untuk mengakses </div>
 
-    <form onsubmit="return loginUser()">
+    <div class="logo">Telkom Property</div>
+    <div class="subtitle">Silakan login untuk mengakses</div>
+
+    {{-- tampilkan error --}}
+    @if(session('error'))
+        <div class="error">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('login.process') }}">
+
+        @csrf
+
         <div class="form-group">
             <label>Email</label>
-            <input type="email" id="email" placeholder="Masukkan email" required>
+            <input type="email" name="email" placeholder="Masukkan email" required>
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" id="password" placeholder="Masukkan password" required>
+            <input type="password" name="password" placeholder="Masukkan password" required>
         </div>
 
         <button type="submit" class="login-btn">Login</button>
+
     </form>
 
-
 </div>
-
-<script>
-function loginUser(){
-
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-
-    // Validasi sederhana (simulasi)
-    if(email === "admin@telkom.co.id" && password === "123456"){
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Email atau password salah!");
-    }
-
-    return false;
-}
-</script>
 
 </body>
 </html>

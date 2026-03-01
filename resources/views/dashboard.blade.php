@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard - Telkom Property</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,7 +72,7 @@
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 
             display: flex;
             justify-content: center;
@@ -102,7 +103,7 @@
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -123,7 +124,7 @@
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
         }
 
         .card h4 {
@@ -147,7 +148,7 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
             transition: 0.3s;
         }
 
@@ -174,97 +175,106 @@
             font-size: 14px;
         }
 
-        @media(max-width:768px){
+        @media(max-width:768px) {
             .cards {
                 flex-direction: column;
             }
+
             .sidebar {
                 display: none;
             }
+
             .main {
                 margin-left: 0;
             }
         }
     </style>
 </head>
+
 <body>
 
-<!-- SIDEBAR DENGAN FILTER -->
-<div class="sidebar">
-    <h4>Telkom Property</h4>
+    <!-- SIDEBAR DENGAN FILTER -->
+    <div class="sidebar">
+        <h4>Telkom Property</h4>
 
-    <form method="GET" action="{{ route('dashboard') }}">
-        <input type="text" name="search" placeholder="Mencari lokasi...">
+        <form method="GET" action="{{ route('dashboard') }}">
+            <input type="text" name="search" placeholder="Mencari lokasi...">
 
-        <select name="daerah">
-            <option value="">Semua Daerah</option>
-            <option value="tanggul">Tanggul</option>
-            <option value="pasuruan">Pasuruan</option>
-            <option value="jember">Jember</option>
-            <option value="banyuwangi">Banyuwangi</option>
-            <option value="situbondo">Situbondo</option>
-            <option value="bondowoso">Bondowoso</option>
-            <option value="lumajang">Lumajang</option>
-            <option value="probolinggo">Probolinggo</option>
-            <option value="sidoarjo">Sidoarjo</option>
-            <option value="pandaan">Pandaan</option>
-            <option value="jombang">Jombang</option>
-            <option value="mojokerto">Mojokerto</option>
-        </select>
+            <select name="daerah">
+                <option value="">Semua Daerah</option>
+                <option value="tanggul">Tanggul</option>
+                <option value="pasuruan">Pasuruan</option>
+                <option value="jember">Jember</option>
+                <option value="banyuwangi">Banyuwangi</option>
+                <option value="situbondo">Situbondo</option>
+                <option value="bondowoso">Bondowoso</option>
+                <option value="lumajang">Lumajang</option>
+                <option value="probolinggo">Probolinggo</option>
+                <option value="sidoarjo">Sidoarjo</option>
+                <option value="pandaan">Pandaan</option>
+                <option value="jombang">Jombang</option>
+                <option value="mojokerto">Mojokerto</option>
+            </select>
 
-        <button type="submit">Cari</button>
-    </form>
-</div>
-
-<div class="main">
-
-    <div class="navbar">
-        <h3>Dashboard Overview</h3>
-        <a href="{{ route('login') }}" class="login-btn">Login</a>
+            <button type="submit">Cari</button>
+        </form>
     </div>
 
-    <!-- Statistik -->
-    <div class="cards">
-        <div class="card">
-            <h4>Gedung Tersedia</h4>
-            <h2>{{ $properties->count() }}</h2>
+    <div class="main">
+
+        <div class="navbar">
+            <h3>Dashboard Overview</h3>
+            <a href="{{ route('login') }}" class="login-btn">Login</a>
         </div>
 
-        <div class="card">
-            <h4>Total Tanah Kosong</h4>
-            <h2>{{ $properties->count() }}</h2>
+        <!-- Statistik -->
+        <div class="cards">
+            <div class="card">
+                <h4>Gedung Tersedia</h4>
+                <h2>{{ $properties->count() }}</h2>
+            </div>
+
+            <div class="card">
+                <h4>Total Tanah Kosong</h4>
+                <h2>{{ $properties->count() }}</h2>
+            </div>
+
+            <div class="card">
+                <h4>Total Property</h4>
+                <h2>1</h2>
+            </div>
         </div>
 
-        <div class="card">
-            <h4>Total Property</h4>
-            <h2>1</h2>
+        <!-- TITLE BAR BARU -->
+        <div class="section-title">
+            <h3>Daftar Aset Properti JTT</h3>
         </div>
-    </div>
 
-    <!-- TITLE BAR BARU -->
-    <div class="section-title">
-        <h3>Daftar Aset Properti JTT</h3>
-    </div>
+        <!-- Property List -->
+        <div class="property-grid">
+            @foreach ($properties as $property)
+                <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
 
-    <!-- Property List -->
-    <div class="property-grid">
-        @foreach($properties as $property)
-            <a href="{{ route('property.show', $property->id) }}"
-               style="text-decoration:none;color:inherit;">
+                    <div class="property-card">
+                        @php
+                            $images = json_decode($property->gambar);
+                        @endphp
 
-                <div class="property-card">
-                    <img src="{{ asset($property->gambar) }}" alt="Property">
-                    <div class="info">
-                        <h4>{{ $property->nama_gedung }}</h4>
-                        <p>{{ $property->alamat }}</p>
+                        @if ($images && count($images) > 0)
+                            <img src="{{ asset('storage/' . $images[0]) }}">
+                        @endif
+                        <div class="info">
+                            <h4>{{ $property->nama_gedung }}</h4>
+                            <p>{{ $property->alamat }}</p>
+                        </div>
                     </div>
-                </div>
 
-            </a>
-        @endforeach
+                </a>
+            @endforeach
+        </div>
+
     </div>
-
-</div>
 
 </body>
+
 </html>

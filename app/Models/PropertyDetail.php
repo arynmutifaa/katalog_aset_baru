@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyDetail extends Model
 {
-    protected $table = 'property_details'; 
+    protected $table = 'property_details';
+
     protected $fillable = [
-        'nama_gedung',
         'area_id',
+        'nama_gedung',
         'alamat',
         'luas_tanah',
         'luas_gedung',
@@ -22,6 +23,17 @@ class PropertyDetail extends Model
         'bentuk_lahan',
         'lebar_lahan',
         'kedalaman_lahan',
-        'potensi_pengembangan'
+        'potensi_pengembangan',
+        'jarak_pusat_kota',
+        'kondisi_lahan',
+        'titik_koordinat',
+        'space_idle_gedung',
+        'fasilitas',
+        'gambar'
+    ];
+
+    // supaya kolom gambar otomatis jadi array (JSON)
+    protected $casts = [
+        'gambar' => 'array',
     ];
 }
