@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Area ID</label>
+                        <label>Status Bangunan</label>
                         <input type="text" name="area_id" class="form-control">
                     </div>
 

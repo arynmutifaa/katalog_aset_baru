@@ -239,9 +239,9 @@
                 <h2>{{ $properties->count() }}</h2>
             </div>
 
-            <div class="card">
+         <div class="card">
                 <h4>Total Property</h4>
-                <h2>1</h2>
+                <h2>{{ $properties->count() }}</h2>
             </div>
         </div>
 
