@@ -146,7 +146,7 @@ body,html{
 <!-- ===== HERO ===== -->
 <section class="hero">
     <div class="hero-content">
-        <h1>Telkom <span>Property Sidoarjo</span></h1>
+        <h1>Telkom Land<span> & Aset Portal Jatim Bagian Timur</span></h1>
         <p>Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur.</p>
 
         <a href="{{ route('dashboard') }}" class="hero-btn">
