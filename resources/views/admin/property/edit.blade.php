@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label>Status Bangunan</label>
+                            <label>Bangunan/Tanah Kosong</label>
                             <input type="text" name="area_id" class="form-control" value="{{ $property->area_id }}">
                         </div>
 
