@@ -5,7 +5,7 @@
     <title>Admin Dashboard - Telkom Property</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -17,277 +17,284 @@
 
         body {
             display: flex;
-            background-color: #f4f6f9;
+            background: linear-gradient(135deg,#f6f8fc,#eef1f6);
         }
 
+        /* ===== SIDEBAR ===== */
         .sidebar {
-            width: 260px;
+            width: 280px;
             height: 100vh;
-            background: #E30613;
+            background: linear-gradient(180deg,#E30613,#8f0209);
             color: white;
-            padding: 20px;
+            padding: 40px 25px;
             position: fixed;
+            box-shadow: 10px 0 40px rgba(0,0,0,0.15);
         }
 
         .sidebar h4 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: 40px;
         }
 
         .sidebar input,
         .sidebar select {
             width: 100%;
-            padding: 8px;
+            padding: 14px;
+            border-radius: 12px;
             border: none;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-size: 14px;
             outline: none;
         }
 
         .sidebar button {
-            width: 100%;
-            padding: 10px;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
             background: white;
             color: #E30613;
-            border: none;
-            border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-        }
-
-        .main {
-            margin-left: 260px;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .navbar {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .navbar h3 {
-            color: #E30613;
-            font-weight: 600;
-        }
-
-        .nav-buttons {
-            position: absolute;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            background: #E30613;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-dark {
-            background: #333;
-        }
-
-        .section-title {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .section-title h3 {
-            color: #E30613;
-            font-weight: 600;
-        }
-
-        .cards {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            flex: 1;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h4 {
-            margin-bottom: 10px;
-            color: #555;
-        }
-
-        .card h2 {
-            color: #E30613;
-        }
-
-        .property-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .property-card {
-            width: 300px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
             transition: 0.3s;
         }
 
+        .sidebar button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            margin-left: 280px;
+            padding: 50px;
+            width: 100%;
+        }
+
+        /* ===== NAVBAR STYLE (CENTER FIXED) ===== */
+        .navbar {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            padding: 28px 35px;
+            border-radius: 22px;
+            margin-bottom: 45px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .navbar h3 {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(90deg,#E30613,#ff4d57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-buttons {
+            margin-left: auto;
+            display: flex;
+            gap: 18px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.3s;
+            text-decoration: none;
+            background: linear-gradient(135deg,#E30613,#b8040f);
+            color: white;
+        }
+
+        .btn-dark {
+            background: #222;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(227,6,19,0.35);
+        }
+
+       /* ===== CARDS ===== */
+.cards {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 60px;
+    justify-content: center; /* supaya tetap rapi di tengah */
+}
+
+.card {
+    width: 250px; /* DIKECILKAN */
+    background: white;
+    padding: 25px; /* DIKECILKAN */
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    border-top: 5px solid #E30613;
+    transition: 0.3s;
+}
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card h4 {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            font-size: 42px;
+            color: #E30613;
+        }
+
+        /* ===== PROPERTY GRID ===== */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            transition: 0.4s;
+        }
+
         .property-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
         }
 
         .property-card img {
             width: 100%;
-            height: 160px;
+            height: 200px;
             object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .property-card:hover img {
+            transform: scale(1.1);
         }
 
         .property-card .info {
-            padding: 15px;
+            padding: 28px;
         }
 
         .property-card h4 {
-            margin-bottom: 5px;
+            color: #E30613;
+            margin-bottom: 10px;
         }
 
         .property-card p {
-            color: #777;
             font-size: 14px;
+            color: #777;
         }
 
-        @media(max-width:768px) {
-            .cards {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                display: none;
-            }
-
-            .main {
-                margin-left: 0;
-            }
+        @media(max-width:900px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; padding: 30px; }
+            .cards { flex-direction: column; }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="sidebar">
-        <h4>Telkom Property</h4>
+<div class="sidebar">
+    <h4>Telkom Property</h4>
 
+    <form method="GET" action="{{ route('admin.dashboard') }}">
+        <input type="text" name="search" placeholder="Mencari lokasi...">
 
-        <form method="GET" action="{{ route('admin.dashboard') }}">
-            <input type="text" name="search" placeholder="Mencari lokasi...">
+        <select name="daerah">
+            <option value="">Semua Daerah</option>
+            <option value="tanggul">Tanggul</option>
+            <option value="pasuruan">Pasuruan</option>
+            <option value="jember">Jember</option>
+            <option value="banyuwangi">Banyuwangi</option>
+            <option value="situbondo">Situbondo</option>
+            <option value="bondowoso">Bondowoso</option>
+            <option value="lumajang">Lumajang</option>
+            <option value="probolinggo">Probolinggo</option>
+            <option value="sidoarjo">Sidoarjo</option>
+            <option value="pandaan">Pandaan</option>
+            <option value="jombang">Jombang</option>
+            <option value="mojokerto">Mojokerto</option>
+        </select>
 
-            <select name="daerah">
-                <option value="">Semua Daerah</option>
-                <option value="tanggul">Tanggul</option>
-                <option value="pasuruan">Pasuruan</option>
-                <option value="jember">Jember</option>
-                <option value="banyuwangi">Banyuwangi</option>
-                <option value="situbondo">Situbondo</option>
-                <option value="bondowoso">Bondowoso</option>
-                <option value="lumajang">Lumajang</option>
-                <option value="probolinggo">Probolinggo</option>
-                <option value="sidoarjo">Sidoarjo</option>
-                <option value="pandaan">Pandaan</option>
-                <option value="jombang">Jombang</option>
-                <option value="mojokerto">Mojokerto</option>
-            </select>
+        <button type="submit">Cari</button>
+    </form>
+</div>
 
-            <button type="submit">Cari</button>
-        </form>
+<div class="main">
+
+    <!-- NAVBAR DASHBOARD -->
+    <div class="navbar">
+        <h3>Dashboard Overview</h3>
+
+        <div class="nav-buttons">
+            <a href="{{ route('admin.property.create') }}" class="btn">
+                Tambah Property
+            </a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-dark">
+                    Logout
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div class="main">
-
-        <div class="navbar">
-            <h3>Dashboard Overview</h3>
-
-            <div class="nav-buttons">
-                <a href="{{ route('admin.property.create') }}" class="btn">
-                    Tambah Property
-                </a>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="btn btn-dark">
-                        Logout
-                    </button>
-                </form>
-            </div>
+    <div class="cards">
+        <div class="card">
+            <h4>Gedung Tersedia</h4>
+            <h2>{{ $properties->count() }}</h2>
         </div>
-
-        <div class="cards">
-            <div class="card">
-                <h4>Gedung Tersedia</h4>
-                <h2>{{ $properties->count() }}</h2>
-            </div>
-
-            <div class="card">
-                <h4>Total Tanah Kosong</h4>
-                <h2>{{ $properties->count() }}</h2>
-            </div>
-
-            <div class="card">
-                <h4>Total Property</h4>
-                <h2>{{ $properties->count() }}</h2>
-            </div>
+        <div class="card">
+            <h4>Total Tanah Kosong</h4>
+            <h2>{{ $properties->count() }}</h2>
         </div>
-
-        <div class="section-title">
-            <h3>Daftar Aset Properti JTT</h3>
+        <div class="card">
+            <h4>Total Property</h4>
+            <h2>{{ $properties->count() }}</h2>
         </div>
-
-        <div class="property-grid">
-            @foreach ($properties as $property)
-                <a href="{{ route('admin.property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
-
-                    <div class="property-card">
-                        @php
-                            $images = json_decode($property->gambar);
-                        @endphp
-
-                        @if ($images && count($images) > 0)
-                            <img src="{{ asset('storage/' . $images[0]) }}">
-                        @endif
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p>{{ $property->alamat }}</p>
-                        </div>
-                    </div>
-
-                </a>
-            @endforeach
-        </div>
-
     </div>
+
+    <!-- NAVBAR DAFTAR ASET -->
+    <div class="navbar">
+        <h3>Daftar Aset Properti JTT</h3>
+    </div>
+
+    <div class="property-grid">
+        @foreach ($properties as $property)
+        <a href="{{ route('admin.property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+            <div class="property-card">
+                @php $images = json_decode($property->gambar); @endphp
+
+                @if ($images && count($images) > 0)
+                    <img src="{{ asset('storage/' . $images[0]) }}">
+                @endif
+
+                <div class="info">
+                    <h4>{{ $property->nama_gedung }}</h4>
+                    <p>{{ $property->alamat }}</p>
+                </div>
+            </div>
+        </a>
+        @endforeach
+    </div>
+
+</div>
 
 </body>
-
 </html>
