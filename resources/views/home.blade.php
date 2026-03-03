@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Telkom Property</title>
+<title>Telkom Land & Aset Portal</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -19,42 +19,47 @@ body,html{
     height:100%;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== FULL WIDTH GLASS NAVBAR ===== */
 .navbar{
-    position:absolute;
+    position:fixed;
     top:0;
+    left:0;
     width:100%;
+    
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:25px 60px;
-    z-index:10;
+    justify-content:flex-start;
+
+    padding:12px 60px;
+
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom:1px solid rgba(255,255,255,0.15);
+
+    z-index:100;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:700;
-    color:white;
-}
-
-.nav-links{
+/* NAV CONTENT */
+.nav-left{
     display:flex;
-    gap:40px;
+    align-items:center;
+    gap:12px;
 }
 
-.nav-links a{
-    text-decoration:none;
-    color:white;
+.nav-logo{
+    height:45px;
+    width:auto;
+}
+
+.logo-text{
+    font-size:18px;
     font-weight:500;
-    font-size:14px;
-    transition:0.3s;
+    color:white;
+    letter-spacing:0.5px;
 }
-
-.nav-links a:hover{
-    color:#E30613;
-}
-
-/* ===== HERO SECTION ===== */
+/* ===== HERO ===== */
 .hero{
     height:100vh;
     background:url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
@@ -70,85 +75,119 @@ body,html{
     content:'';
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.6);
+    background: linear-gradient(
+        135deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.65) 50%,
+        rgba(227,6,19,0.55) 100%
+    );
 }
 
 .hero-content{
     position:relative;
-    max-width:900px;
+    max-width:1100px;
+    padding:0 20px;
 }
 
 .hero h1{
     font-size:64px;
-    font-weight:700;
+    font-weight:800;
+    line-height:1.2;
+    white-space:nowrap;
 }
 
 .hero h1 span{
     color:#E30613;
 }
 
-.hero p{
-    margin-top:20px;
-    font-size:18px;
-    font-weight:300;
+.hero h2{
+    margin-top:15px;
+    font-weight:500;
+    font-size:24px;
+    opacity:0.9;
 }
 
+.hero p{
+    margin-top:25px;
+    font-size:18px;
+    font-weight:300;
+    opacity:0.85;
+}
+
+/* BUTTON */
 .hero-btn{
-    margin-top:40px;
+    margin-top:45px;
     display:inline-block;
-    padding:14px 32px;
-    border:2px solid white;
-    border-radius:40px;
+    padding:14px 35px;
+    border-radius:50px;
+    background:#E30613;
     color:white;
     text-decoration:none;
-    font-weight:500;
+    font-weight:600;
+    letter-spacing:1px;
     transition:0.3s;
+    box-shadow:0 8px 25px rgba(227,6,19,0.4);
 }
 
 .hero-btn:hover{
-    background:#E30613;
-    border-color:#E30613;
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(227,6,19,0.6);
 }
 
-/* Scroll indicator */
-.scroll-down{
-    position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:14px;
-    opacity:0.8;
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+    .hero h1{
+        font-size:52px;
+        white-space:normal;
+    }
 }
 
 @media(max-width:768px){
-    .hero h1{
-        font-size:40px;
-    }
     .navbar{
-        padding:20px;
+        padding:10px 20px;
     }
-    .nav-links{
-        gap:20px;
+
+    .nav-logo{
+        height:38px;
+    }
+
+    .logo-text{
+        font-size:16px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero h2{
+        font-size:20px;
+    }
+
+    .hero p{
+        font-size:16px;
     }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAVBAR -->
 <div class="navbar">
-    <div class="logo">PT Graha Sarana Duta</div>
-    <div class="nav-links">
-
+    <div class="nav-left">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="nav-logo">
+        <div class="logo-text">Telkom Property</div>
     </div>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <h1>Telkom Land<span> & Aset Portal Jatim Bagian Timur</span></h1>
-        <p>Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur.</p>
-
+        <h1>Telkom Land <span>& Aset Portal</span></h1>
+        <h2>Jawa Timur Bagian Timur</h2>
+        <p>
+            Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur 
+            secara profesional dan berkelanjutan.
+        </p>
         <a href="{{ route('dashboard') }}" class="hero-btn">
             Masuk Dashboard
         </a>
