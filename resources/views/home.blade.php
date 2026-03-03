@@ -19,29 +19,22 @@ body,html{
     height:100%;
 }
 
-/* ===== FULL WIDTH GLASS NAVBAR ===== */
+/* ===== NAVBAR ===== */
 .navbar{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    
     display:flex;
     align-items:center;
     justify-content:flex-start;
-
     padding:12px 60px;
-
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
     border-bottom:1px solid rgba(255,255,255,0.15);
-
     z-index:100;
 }
 
-/* NAV CONTENT */
 .nav-left{
     display:flex;
     align-items:center;
@@ -50,15 +43,14 @@ body,html{
 
 .nav-logo{
     height:45px;
-    width:auto;
 }
 
 .logo-text{
     font-size:18px;
     font-weight:500;
     color:white;
-    letter-spacing:0.5px;
 }
+
 /* ===== HERO ===== */
 .hero{
     height:100vh;
@@ -77,9 +69,9 @@ body,html{
     inset:0;
     background: linear-gradient(
         135deg,
-        rgba(0,0,0,0.85) 0%,
+        rgba(33,31,31,0.85) 0%,
         rgba(0,0,0,0.65) 50%,
-        rgba(227,6,19,0.55) 100%
+        rgba(144,5,17,0.543) 100%
     );
 }
 
@@ -89,29 +81,40 @@ body,html{
     padding:0 20px;
 }
 
+/* ===== ANIMASI ===== */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* JUDUL */
 .hero h1{
     font-size:64px;
     font-weight:800;
     line-height:1.2;
     white-space:nowrap;
+    opacity:0;
+    animation: fadeUp 1.5s ease forwards;
 }
 
 .hero h1 span{
     color:#E30613;
 }
 
-.hero h2{
-    margin-top:15px;
-    font-weight:500;
-    font-size:24px;
-    opacity:0.9;
-}
-
+/* PARAGRAF */
 .hero p{
     margin-top:25px;
     font-size:18px;
     font-weight:300;
-    opacity:0.85;
+    opacity:0;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay:0.6s;
 }
 
 /* BUTTON */
@@ -126,7 +129,11 @@ body,html{
     font-weight:600;
     letter-spacing:1px;
     transition:0.3s;
-    box-shadow:0 8px 25px rgba(227,6,19,0.4);
+    box-shadow:0 8px 25px rgba(253,223,225,0.4);
+
+    opacity:0;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay:1.2s;
 }
 
 .hero-btn:hover{
@@ -159,10 +166,6 @@ body,html{
         font-size:34px;
     }
 
-    .hero h2{
-        font-size:20px;
-    }
-
     .hero p{
         font-size:16px;
     }
@@ -175,22 +178,24 @@ body,html{
 <div class="navbar">
     <div class="nav-left">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="nav-logo">
-        <div class="logo-text">Telkom Property</div>
+        <div class="logo-text">Telkom Property Sidoarjo</div>
     </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <h1>Telkom Land <span>& Aset Portal</span></h1>
-        <h2>Jawa Timur Bagian Timur</h2>
+
+        <h1>Telkom Land <span>& Aset Portal JTT</span></h1>
+
         <p>
-            Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur 
-            secara profesional dan berkelanjutan.
+            Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur.
         </p>
+
         <a href="{{ route('dashboard') }}" class="hero-btn">
             Masuk Dashboard
         </a>
+
     </div>
 </section>
 
