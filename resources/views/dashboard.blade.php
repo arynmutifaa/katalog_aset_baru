@@ -105,9 +105,10 @@ backdrop-filter:blur(12px);
 padding:22px 30px;
 border-radius:22px;
 margin-bottom:25px;
-position:relative;
 display:flex;
 align-items:center;
+justify-content:center;
+gap:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.05);
 }
 
@@ -117,9 +118,6 @@ font-weight:700;
 background:linear-gradient(90deg,#E30613,#ff4d57);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-position:absolute;
-left:50%;
-transform:translateX(-50%);
 }
 
 .nav-buttons{
@@ -239,6 +237,29 @@ padding:30px;
 
 .cards{
 flex-direction:column;
+}
+
+}
+@media(max-width:768px){
+
+.navbar{
+flex-direction:row;
+justify-content:center;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.navbar h3{
+font-size:clamp(20px,3vw,30px);
+font-weight:700;
+background:linear-gradient(90deg,#E30613,#ff4d57);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-buttons{
+margin-left:0;
 }
 
 }
