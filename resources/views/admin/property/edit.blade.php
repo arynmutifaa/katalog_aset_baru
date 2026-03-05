@@ -11,7 +11,7 @@
 
     <div class="container mt-5">
         <div class="card shadow">
-            <div class="card-header bg-danger text-dark">
+            <div class="card-header bg-danger text-white">
                 <h4 class="mb-0">Edit Property</h4>
             </div>
 
