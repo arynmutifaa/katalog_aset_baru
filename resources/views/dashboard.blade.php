@@ -1,280 +1,343 @@
+```html
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Dashboard - Telkom Property</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard - Telkom Property</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
 
-        body {
-            display: flex;
-            background-color: #f4f6f9;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 260px;
-            height: 100vh;
-            background: #E30613;
-            color: white;
-            padding: 20px;
-            position: fixed;
-        }
+body{
+display:flex;
+background:linear-gradient(135deg,#f6f8fc,#eef1f6);
+}
 
-        .sidebar h4 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 20px;
-            font-weight: 600;
-        }
+/* ===== SIDEBAR ===== */
 
-        .sidebar input,
-        .sidebar select {
-            width: 100%;
-            padding: 8px;
-            border: none;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            outline: none;
-        }
+.sidebar{
+width:280px;
+height:100vh;
+background:linear-gradient(180deg,#E30613,#8f0209);
+color:white;
+padding:40px 25px;
+position:fixed;
+box-shadow:10px 0 40px rgba(0,0,0,0.15);
+}
 
-        .sidebar button {
-            width: 100%;
-            padding: 10px;
-            background: white;
-            color: #E30613;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+.sidebar h4{
+font-size:24px;
+margin-bottom:40px;
+}
 
-        /* MAIN */
-        .main {
-            margin-left: 260px;
-            padding: 20px;
-            width: 100%;
-        }
+.sidebar input,
+.sidebar select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:none;
+margin-bottom:18px;
+font-size:14px;
+outline:none;
+}
 
-        /* NAVBAR */
-        .navbar {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.sidebar button{
+padding:14px;
+border-radius:12px;
+border:none;
+background:white;
+color:#E30613;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+width:100%;
+}
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+.sidebar button:hover{
+transform:translateY(-3px);
+}
 
-        .navbar h3 {
-            color: #E30613;
-            font-weight: 600;
-        }
+/* ===== MAIN ===== */
 
-        .login-btn {
-            background: #E30613;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
+.main{
+margin-left:260px;
+padding:30px 30px 30px 20px;
+width:100%;
+position:relative;
+}
 
-            position: absolute;
-            right: 20px;
-        }
+/* ===== LOGO BACKGROUND ===== */
 
-        /* SECTION TITLE (SAMA SEPERTI NAVBAR) */
-        .section-title {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+.main::before{
+content:"";
+position:absolute;
+top:100%;
+left:50%;
+transform:translate(-50%, -50%);
+width:1700px;
+height:1700px;
+background:url('/images/logo.png') no-repeat center;
+background-size:contain;
+opacity:0.05;
+z-index:0;
+pointer-events:none;
+}
 
-        .section-title h3 {
-            color: #E30613;
-            font-weight: 600;
-        }
+.main > *{
+position:relative;
+z-index:1;
+}
 
-        /* CARDS */
-        .cards {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
+/* ===== NAVBAR ===== */
 
-        .card {
-            flex: 1;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
+.navbar{
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+padding:22px 30px;
+border-radius:22px;
+margin-bottom:25px;
+position:relative;
+display:flex;
+align-items:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.05);
+}
 
-        .card h4 {
-            margin-bottom: 10px;
-            color: #555;
-        }
+.navbar h3{
+font-size:30px;
+font-weight:700;
+background:linear-gradient(90deg,#E30613,#ff4d57);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+}
 
-        .card h2 {
-            color: #E30613;
-        }
+.nav-buttons{
+margin-left:auto;
+display:flex;
+gap:18px;
+}
 
-        /* PROPERTY */
-        .property-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+.login-btn{
+padding:10px 20px;
+border-radius:14px;
+text-decoration:none;
+font-weight:500;
+font-size:14px;
+background:linear-gradient(135deg,#E30613,#b8040f);
+color:white;
+transition:0.3s;
+}
 
-        .property-card {
-            width: 300px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
+.login-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 25px rgba(227,6,19,0.35);
+}
 
-        .property-card:hover {
-            transform: scale(1.03);
-        }
+/* ===== CARDS ===== */
 
-        .property-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
+.cards{
+display:flex;
+gap:20px;
+margin:15px 0 25px 0;
+width:100%;
+}
 
-        .property-card .info {
-            padding: 15px;
-        }
+.card{
+flex:1;
+background:white;
+padding:15px 20px;
+border-radius:22px;
+box-shadow:0 15px 40px rgba(0,0,0,0.05);
+border-top:5px solid #E30613;
+transition:0.3s;
+}
 
-        .property-card h4 {
-            margin-bottom: 5px;
-        }
+.card:hover{
+transform:translateY(-6px);
+}
 
-        .property-card p {
-            color: #777;
-            font-size: 14px;
-        }
+.card h4{
+color:#777;
+margin-bottom:5px;
+font-size:15px;
+}
 
-        @media(max-width:768px) {
-            .cards {
-                flex-direction: column;
-            }
+.card h2{
+font-size:28px;
+color:#E30613;
+}
 
-            .sidebar {
-                display: none;
-            }
+/* ===== PROPERTY GRID ===== */
 
-            .main {
-                margin-left: 0;
-            }
-        }
-    </style>
+.property-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:35px;
+}
+
+.property-card{
+background:white;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,0.05);
+transition:0.4s;
+}
+
+.property-card:hover{
+transform:translateY(-12px);
+box-shadow:0 25px 60px rgba(0,0,0,0.08);
+}
+
+.property-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.property-card:hover img{
+transform:scale(1.1);
+}
+
+.property-card .info{
+padding:20px;
+}
+
+.property-card h4{
+color:#E30613;
+margin-bottom:8px;
+}
+
+.property-card p{
+font-size:14px;
+color:#777;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+padding:30px;
+}
+
+.cards{
+flex-direction:column;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <!-- SIDEBAR DENGAN FILTER -->
-    <div class="sidebar">
-        <h4>Telkom Property</h4>
+<div class="sidebar">
 
-        <form method="GET" action="{{ route('dashboard') }}">
-            <input type="text" name="search" placeholder="Mencari lokasi...">
+<h4>Telkom Property</h4>
 
-            <select name="daerah">
-                <option value="">Semua Daerah</option>
-                <option value="tanggul">Tanggul</option>
-                <option value="pasuruan">Pasuruan</option>
-                <option value="jember">Jember</option>
-                <option value="banyuwangi">Banyuwangi</option>
-                <option value="situbondo">Situbondo</option>
-                <option value="bondowoso">Bondowoso</option>
-                <option value="lumajang">Lumajang</option>
-                <option value="probolinggo">Probolinggo</option>
-                <option value="sidoarjo">Sidoarjo</option>
-                <option value="pandaan">Pandaan</option>
-                <option value="jombang">Jombang</option>
-                <option value="mojokerto">Mojokerto</option>
-            </select>
+<form method="GET" action="{{ route('dashboard') }}">
 
-            <button type="submit">Cari</button>
-        </form>
-    </div>
+<input type="text" name="search" placeholder="Mencari lokasi...">
 
-    <div class="main">
+<select name="daerah">
+<option value="">Semua Daerah</option>
+<option value="tanggul">Tanggul</option>
+<option value="pasuruan">Pasuruan</option>
+<option value="jember">Jember</option>
+<option value="banyuwangi">Banyuwangi</option>
+<option value="situbondo">Situbondo</option>
+<option value="bondowoso">Bondowoso</option>
+<option value="lumajang">Lumajang</option>
+<option value="probolinggo">Probolinggo</option>
+<option value="sidoarjo">Sidoarjo</option>
+<option value="pandaan">Pandaan</option>
+<option value="jombang">Jombang</option>
+<option value="mojokerto">Mojokerto</option>
+</select>
 
-        <div class="navbar">
-            <h3>Dashboard Overview</h3>
-            <a href="{{ route('login') }}" class="login-btn">Login</a>
-        </div>
+<button type="submit">Cari</button>
 
-        <!-- Statistik -->
-        <div class="cards">
-            <div class="card">
-                <h4>Gedung Tersedia</h4>
-                <h2>{{ $properties->count() }}</h2>
-            </div>
+</form>
 
-            <div class="card">
-                <h4>Total Tanah Kosong</h4>
-                <h2>{{ $properties->count() }}</h2>
-            </div>
+</div>
 
-            <div class="card">
-                <h4>Total Property</h4>
-                <h2>1</h2>
-            </div>
-        </div>
+<div class="main">
 
-        <!-- TITLE BAR BARU -->
-        <div class="section-title">
-            <h3>Daftar Aset Properti JTT</h3>
-        </div>
+<div class="navbar">
+<h3>DASHBOARD OVERVIEW</h3>
 
-        <!-- Property List -->
-        <div class="property-grid">
-            @foreach ($properties as $property)
-                <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+<div class="nav-buttons">
+<a href="{{ route('login') }}" class="login-btn">Login</a>
+</div>
 
-                    <div class="property-card">
-                        @php
-                            $images = json_decode($property->gambar);
-                        @endphp
+</div>
 
-                        @if ($images && count($images) > 0)
-                            <img src="{{ asset('storage/' . $images[0]) }}">
-                        @endif
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p>{{ $property->alamat }}</p>
-                        </div>
-                    </div>
+<div class="cards">
 
-                </a>
-            @endforeach
-        </div>
+<div class="card">
+<h4>Gedung Tersedia</h4>
+<h2>{{ $properties->count() }}</h2>
+</div>
 
-    </div>
+<div class="card">
+<h4>Total Tanah Kosong</h4>
+<h2>{{ $properties->count() }}</h2>
+</div>
+
+<div class="card">
+<h4>Total Property</h4>
+<h2>{{ $properties->count() }}</h2>
+</div>
+
+</div>
+
+<div class="property-grid">
+
+@foreach ($properties as $property)
+
+<a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+
+<div class="property-card">
+
+@php $images = json_decode($property->gambar); @endphp
+
+@if ($images && count($images) > 0)
+<img src="{{ asset('storage/' . $images[0]) }}">
+@endif
+
+<div class="info">
+<h4>{{ $property->nama_gedung }}</h4>
+<p>{{ $property->alamat }}</p>
+</div>
+
+</div>
+
+</a>
+
+@endforeach
+
+</div>
+
+</div>
 
 </body>
-
 </html>
+```

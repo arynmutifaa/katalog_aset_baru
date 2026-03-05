@@ -192,7 +192,7 @@
 
         <table>
             <tr>
-                <td>AREA ID</td>
+                <td>BAGUNAN/TANAH KOSONG</td>
                 <td>{{ $property->area_id }}</td>
             </tr>
             <tr>

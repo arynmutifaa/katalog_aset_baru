@@ -11,7 +11,7 @@
 
     <div class="container mt-5">
         <div class="card shadow">
-            <div class="card-header bg-danger text-dark">
+            <div class="card-header bg-danger text-white">
                 <h4 class="mb-0">Edit Property</h4>
             </div>
 
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label>Area ID</label>
+                            <label>Bangunan/Tanah Kosong</label>
                             <input type="text" name="area_id" class="form-control" value="{{ $property->area_id }}">
                         </div>
 
