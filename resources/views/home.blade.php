@@ -19,7 +19,6 @@ body,html{
     height:100%;
 }
 
-/* ===== NAVBAR ===== */
 .navbar{
     position:fixed;
     top:0;
@@ -81,7 +80,6 @@ body,html{
     padding:0 20px;
 }
 
-/* ===== ANIMASI ===== */
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -107,7 +105,6 @@ body,html{
     color:#E30613;
 }
 
-/* PARAGRAF */
 .hero p{
     margin-top:25px;
     font-size:18px;
@@ -117,7 +114,6 @@ body,html{
     animation-delay:0.6s;
 }
 
-/* BUTTON */
 .hero-btn{
     margin-top:45px;
     display:inline-block;
@@ -141,7 +137,6 @@ body,html{
     box-shadow:0 12px 35px rgba(227,6,19,0.6);
 }
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:1200px){
     .hero h1{
         font-size:52px;
@@ -174,7 +169,6 @@ body,html{
 </head>
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-left">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="nav-logo">
@@ -182,7 +176,6 @@ body,html{
     </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
     <div class="hero-content">
 

@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,8 +28,12 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Bangunan/Tanah Kosong</label>
-                        <input type="text" name="area_id" class="form-control">
+                        <label>Bangunan / Tanah Kosong</label>
+                        <select name="area_id" class="form-select">
+                            <option value="">-- Pilih Jenis --</option>
+                            <option value="bangunan">Bangunan</option>
+                            <option value="tanah_kosong">Tanah Kosong</option>
+                        </select>
                     </div>
 
                     <div class="col-md-12 mb-3">
@@ -121,7 +126,6 @@
                         <textarea name="fasilitas" class="form-control" rows="3"></textarea>
                     </div>
 
-                    <!-- INI YANG DIRUBAH -->
                     <div class="col-md-12 mb-3">
                         <label>Upload Gambar (bisa lebih dari 1)</label>
                         <input type="file" name="gambar[]" class="form-control" multiple>
@@ -142,3 +146,4 @@
 
 </body>
 </html>
+```
