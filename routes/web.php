@@ -5,12 +5,6 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
 
-/*
-|--------------------------------------------------------------------------
-| PUBLIC ROUTES
-|--------------------------------------------------------------------------
-*/
-
 // Home
 Route::get('/', function () {
     return view('home');
@@ -24,12 +18,7 @@ Route::get('/dashboard', [PropertyController::class, 'index'])
 Route::get('/property/{id}', [PropertyController::class, 'show'])
     ->name('property.show');
 
-
-/*
-|--------------------------------------------------------------------------
-| LOGIN ROUTES
-|--------------------------------------------------------------------------
-*/
+// login routes
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])
     ->name('login');
@@ -40,12 +29,7 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-
-/*
-|--------------------------------------------------------------------------
-| ADMIN ROUTES (WAJIB LOGIN)
-|--------------------------------------------------------------------------
-*/
+//admin route
 
 Route::middleware(['auth'])
     ->prefix('admin')
