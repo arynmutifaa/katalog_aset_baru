@@ -179,7 +179,7 @@ body,html{
 <section class="hero">
     <div class="hero-content">
 
-        <h1>Telkom Land <span>& Aset Portal JTT</span></h1>
+        <h1>Telkom Land <span>& Asset Portal JTT</span></h1>
 
         <p>
             Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur.
