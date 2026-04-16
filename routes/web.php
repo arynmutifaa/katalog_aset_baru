@@ -15,6 +15,27 @@ Route::get('/katalog-aset', function () {
     return view('katalog-aset');
 })->name('katalog.aset');
 
+// Detail menu katalog
+Route::get('/company-profile', function () {
+    return view('katalog.company-profile');
+})->name('company.profile');
+
+Route::get('/our-capabilities', function () {
+    return view('katalog.our-capabilities');
+})->name('our.capabilities');
+
+Route::get('/product-portfolio-digital-business', function () {
+    return view('katalog.product-portfolio-digital-business');
+})->name('product.portfolio');
+
+Route::get('/business-scheme', function () {
+    return view('katalog.business-scheme');
+})->name('business.scheme');
+
+Route::get('/gallery', function () {
+    return view('katalog.gallery');
+})->name('gallery');
+
 // Dashboard umum (lihat property saja)
 Route::get('/dashboard', [PropertyController::class, 'index'])
     ->name('dashboard');

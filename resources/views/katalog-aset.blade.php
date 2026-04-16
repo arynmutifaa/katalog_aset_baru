@@ -106,32 +106,11 @@
             justify-content:center;
         }
 
-        .outline-badge{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            width:fit-content;
-            padding:10px 16px;
-            border-radius:999px;
-            background:rgba(255,255,255,0.14);
-            color:white;
-            font-size:13px;
-            font-weight:600;
-            margin-bottom:22px;
-        }
-
         .outline-left h1{
             font-size:56px;
             line-height:1.1;
             font-weight:800;
             margin-bottom:20px;
-        }
-
-        .outline-left p{
-            font-size:16px;
-            line-height:1.9;
-            color:rgba(255,255,255,0.88);
-            max-width:480px;
         }
 
         .outline-left .mini-line{
@@ -159,19 +138,6 @@
             border-bottom:1px solid #ececec;
         }
 
-        .outline-top h2{
-            font-size:22px;
-            color:#2c2f38;
-            font-weight:700;
-        }
-
-        .outline-top p{
-            font-size:14px;
-            color:#666;
-            max-width:520px;
-            line-height:1.7;
-        }
-
         .outline-list{
             display:flex;
             flex-direction:column;
@@ -188,6 +154,7 @@
             padding:18px 20px;
             transition:0.3s;
             border:1px solid #eceef5;
+            text-decoration:none;
         }
 
         .outline-item:hover{
@@ -242,17 +209,7 @@
             justify-content:center;
             font-size:20px;
             font-weight:700;
-        }
-
-        .outline-footer{
-            margin-top:22px;
-            padding:18px 20px;
-            background:#fff3f4;
-            border-left:5px solid #E30613;
-            border-radius:16px;
-            color:#444;
-            font-size:14px;
-            line-height:1.8;
+            text-decoration:none;
         }
 
         @media(max-width:1100px){
@@ -326,15 +283,13 @@
             <div class="outline-left">
                 <h1>WHAT ARE WE GOING TO DISCUSS?</h1>
                 <div class="mini-line"></div>
-
             </div>
 
             <div class="outline-right">
-                <div class="outline-top">
-                </div>
+                <div class="outline-top"></div>
 
                 <div class="outline-list">
-                    <div class="outline-item">
+                    <a href="{{ route('company.profile') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">01</div>
                             <div class="item-text">
@@ -345,7 +300,7 @@
                             </div>
                         </div>
                         <div class="item-arrow">›</div>
-                    </div>
+                    </a>
 
                     <div class="outline-item">
                         <div class="item-left">
