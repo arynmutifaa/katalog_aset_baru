@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 
@@ -63,14 +62,12 @@
             transform: translateY(-3px);
         }
 
-
         .main {
-            margin-left: 260px;
+            margin-left: 300px;
             padding: 30px 30px 30px 20px;
             width: 100%;
             position: relative;
         }
-
 
         .main::before {
             content: "";
@@ -92,7 +89,6 @@
             z-index: 1;
         }
 
-
         .navbar {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
@@ -104,6 +100,7 @@
             justify-content: center;
             gap: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .navbar h3 {
@@ -115,11 +112,15 @@
         }
 
         .nav-buttons {
-            margin-left: auto;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             gap: 18px;
         }
 
+        .home-btn,
         .login-btn {
             padding: 10px 20px;
             border-radius: 14px;
@@ -131,12 +132,11 @@
             transition: 0.3s;
         }
 
+        .home-btn:hover,
         .login-btn:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 25px rgba(227, 6, 19, 0.35);
         }
-
-        /* ===== CARDS ===== */
 
         .cards {
             display: flex;
@@ -169,7 +169,6 @@
             font-size: 28px;
             color: #E30613;
         }
-
 
         .property-grid {
             display: grid;
@@ -215,9 +214,7 @@
             color: #777;
         }
 
-
         @media(max-width:900px) {
-
             .sidebar {
                 display: none;
             }
@@ -230,17 +227,16 @@
             .cards {
                 flex-direction: column;
             }
-
         }
 
         @media(max-width:768px) {
-
             .navbar {
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 15px;
                 flex-wrap: wrap;
+                padding: 22px 20px;
             }
 
             .navbar h3 {
@@ -249,12 +245,14 @@
                 background: linear-gradient(90deg, #E30613, #ff4d57);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+                text-align: center;
             }
 
             .nav-buttons {
-                margin-left: 0;
+                position: static;
+                transform: none;
+                margin-top: 10px;
             }
-
         }
     </style>
 
@@ -263,19 +261,16 @@
 <body>
 
     <div class="sidebar">
-
         <h4>Telkom Property</h4>
 
         <form method="GET" action="{{ route('dashboard') }}">
-
             <input type="text" name="search" placeholder="Mencari lokasi...">
 
             <select name="daerah">
-
                 <option value="">Semua Daerah</option>
                 <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>
                     Pasuruan
-               </option>
+                </option>
                 <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>
                     Jember
                 </option>
@@ -301,19 +296,18 @@
             <button type="submit">Cari</button>
         </form>
     </div>
-    <div class="main">
 
+    <div class="main">
         <div class="navbar">
             <h3>DASHBOARD OVERVIEW</h3>
 
             <div class="nav-buttons">
+                <a href="/" class="home-btn">Back Home</a>
                 <a href="{{ route('login') }}" class="login-btn">Login</a>
             </div>
-
         </div>
 
         <div class="cards">
-
             <div class="card">
                 <h4>Gedung Tersedia</h4>
                 <h2>{{ $properties->where('area_id', 'bangunan')->count() }}</h2>
@@ -328,16 +322,12 @@
                 <h4>Total Property</h4>
                 <h2>{{ $properties->count() }}</h2>
             </div>
-
         </div>
 
         <div class="property-grid">
-
             @foreach ($properties as $property)
                 <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
-
                     <div class="property-card">
-
                         @php $images = json_decode($property->gambar); @endphp
 
                         @if ($images && count($images) > 0)
@@ -348,17 +338,12 @@
                             <h4>{{ $property->nama_gedung }}</h4>
                             <p>{{ $property->alamat }}</p>
                         </div>
-
                     </div>
-
                 </a>
             @endforeach
-
         </div>
-
     </div>
 
 </body>
 
 </html>
-```

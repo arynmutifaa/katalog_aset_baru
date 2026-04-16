@@ -10,6 +10,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// Katalog Asset
+Route::get('/katalog-aset', function () {
+    return view('katalog-aset');
+})->name('katalog.aset');
+
 // Dashboard umum (lihat property saja)
 Route::get('/dashboard', [PropertyController::class, 'index'])
     ->name('dashboard');
@@ -19,7 +24,6 @@ Route::get('/property/{id}', [PropertyController::class, 'show'])
     ->name('property.show');
 
 // login routes
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])
     ->name('login');
 
@@ -29,8 +33,7 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-//admin route
-
+// admin route
 Route::middleware(['auth'])
     ->prefix('admin')
     ->name('admin.')

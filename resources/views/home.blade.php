@@ -114,8 +114,21 @@ body,html{
     animation-delay:0.6s;
 }
 
-.hero-btn{
+/* WRAPPER BUTTON */
+.hero-buttons{
     margin-top:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay:1.2s;
+}
+
+/* BUTTON */
+.hero-btn{
     display:inline-block;
     padding:14px 35px;
     border-radius:50px;
@@ -126,10 +139,6 @@ body,html{
     letter-spacing:1px;
     transition:0.3s;
     box-shadow:0 8px 25px rgba(253,223,225,0.4);
-
-    opacity:0;
-    animation: fadeUp 1.5s ease forwards;
-    animation-delay:1.2s;
 }
 
 .hero-btn:hover{
@@ -164,6 +173,11 @@ body,html{
     .hero p{
         font-size:16px;
     }
+
+    .hero-buttons{
+        flex-direction:column;
+        gap:15px;
+    }
 }
 </style>
 </head>
@@ -179,15 +193,21 @@ body,html{
 <section class="hero">
     <div class="hero-content">
 
-        <h1>Telkom Land <span>& Asset Portal JTT</span></h1>
+        <h1>Katalog Asset <span>& Pelayanan Jasa</span></h1>
 
         <p>
-            Mengoptimalkan dan mengembangkan aset properti Telkom Jatim Timur bagian Timur.
+            Menyediakan katalog aset dan pelayanan jasa Telkom Property Jatim Timur bagian Timur.
         </p>
 
-        <a href="{{ route('dashboard') }}" class="hero-btn">
-            Masuk Dashboard
-        </a>
+        <div class="hero-buttons">
+            <a href="{{ route('dashboard') }}" class="hero-btn">
+                Katalog Asset
+            </a>
+
+            <a href="{{ route('katalog.aset') }}" class="hero-btn">
+                Pelayanan Jasa
+            </a>
+        </div>
 
     </div>
 </section>
