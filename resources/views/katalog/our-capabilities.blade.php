@@ -495,10 +495,7 @@
                 <div class="panel-badge">02 • Our Capabilities</div>
                 <h1>OUR INTERNAL CAPABILITIES</h1>
                 <div class="mini-line"></div>
-                <p>
-                    Menampilkan kemampuan internal perusahaan dalam mendukung
-                    kebutuhan bisnis digital, layanan digital, dan efisiensi operasional.
-                </p>
+
             </div>
 
             <div class="top-section">
