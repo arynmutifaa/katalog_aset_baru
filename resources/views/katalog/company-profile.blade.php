@@ -132,6 +132,12 @@
             margin:20px 0 24px;
         }
 
+        .company-left p{
+            font-size:15px;
+            line-height:1.8;
+            color:rgba(255,255,255,0.86);
+        }
+
         .company-right{
             background: rgba(255,255,255,0.96);
             border-radius:28px;
@@ -169,6 +175,12 @@
             font-weight:800;
         }
 
+        .header-text p{
+            font-size:15px;
+            color:#666;
+            line-height:1.8;
+        }
+
         .content-grid{
             display:grid;
             grid-template-columns:1fr 1fr;
@@ -204,6 +216,101 @@
             grid-column:1 / -1;
         }
 
+        /* ===== COMMISSIONERS & BOARD SECTION ===== */
+        .leadership-wrapper{
+            margin-top:34px;
+            display:flex;
+            flex-direction:column;
+            gap:32px;
+        }
+
+        .org-panel{
+            position:relative;
+            background:#d9d7d7;
+            border-radius:18px;
+            padding:52px 24px 26px;
+            box-shadow:0 12px 26px rgba(0,0,0,0.06);
+        }
+
+        .org-title{
+            position:absolute;
+            top:-22px;
+            left:18px;
+            width:250px;
+            background:#d91f11;
+            color:#fff;
+            padding:10px 20px;
+            border-radius:8px;
+            font-size:18px;
+            font-weight:700;
+            text-align:center;
+            box-shadow:0 8px 18px rgba(217,31,17,0.24);
+        }
+
+        .org-top{
+            display:flex;
+            justify-content:center;
+            margin-bottom:20px;
+        }
+
+        .org-row{
+            display:grid;
+            gap:22px;
+            align-items:start;
+        }
+
+        .org-row.four{
+            grid-template-columns:repeat(4, 1fr);
+        }
+
+        .org-row.three{
+            grid-template-columns:repeat(3, 1fr);
+            max-width:640px;
+            margin:0 auto;
+        }
+
+        .person-card{
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        .person-photo{
+            width:86px;
+            height:86px;
+            border-radius:50%;
+            overflow:hidden;
+            background:#f0f0f0;
+            margin-bottom:10px;
+            box-shadow:0 6px 16px rgba(0,0,0,0.10);
+        }
+
+        .person-photo img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .person-name{
+            font-size:13px;
+            font-weight:600;
+            color:#222;
+            line-height:1.25;
+            min-height:34px;
+            display:flex;
+            align-items:flex-end;
+            justify-content:center;
+        }
+
+        .person-role{
+            margin-top:3px;
+            font-size:13px;
+            font-weight:700;
+            color:#c51d2a;
+            line-height:1.35;
+        }
+
         @media(max-width:1100px){
             .company-wrapper{
                 grid-template-columns:1fr;
@@ -211,6 +318,15 @@
 
             .company-left h1{
                 font-size:42px;
+            }
+
+            .org-row.four{
+                grid-template-columns:repeat(2, 1fr);
+            }
+
+            .org-row.three{
+                grid-template-columns:repeat(2, 1fr);
+                max-width:100%;
             }
         }
 
@@ -242,6 +358,38 @@
             .header-box{
                 flex-direction:column;
             }
+
+            .org-panel{
+                padding:48px 16px 22px;
+            }
+
+            .org-title{
+                width:210px;
+                font-size:16px;
+                padding:9px 16px;
+            }
+
+            .person-photo{
+                width:78px;
+                height:78px;
+            }
+
+            .person-name,
+            .person-role{
+                font-size:12px;
+            }
+        }
+
+        @media(max-width:560px){
+            .org-row.four,
+            .org-row.three{
+                grid-template-columns:1fr;
+            }
+
+            .org-title{
+                left:50%;
+                transform:translateX(-50%);
+            }
         }
     </style>
 </head>
@@ -263,6 +411,7 @@
                 <div class="company-badge">01 • Company Profile</div>
                 <h1>ABOUT US</h1>
                 <div class="mini-line"></div>
+
             </div>
 
             <div class="company-right">
@@ -270,6 +419,10 @@
                     <div class="header-number">01</div>
                     <div class="header-text">
                         <h2>Company Profile</h2>
+                        <p>
+                            Profil singkat perusahaan serta informasi umum mengenai
+                            peran Telkom Property dalam pengelolaan aset dan layanan properti.
+                        </p>
                     </div>
                 </div>
 
@@ -320,6 +473,98 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="leadership-wrapper">
+
+                    <div class="org-panel">
+                        <div class="org-title">Commissioners</div>
+
+                        <div class="org-top">
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/heri-supriadi.jpg') }}" alt="Heri Supriadi">
+                                </div>
+                                <div class="person-name">Heri Supriadi</div>
+                                <div class="person-role">Komisaris Utama</div>
+                            </div>
+                        </div>
+
+                        <div class="org-row four">
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/amalia-adininggar.jpg') }}" alt="Amalia Adininggar Widyasanti">
+                                </div>
+                                <div class="person-name">Amalia Adininggar Widyasanti</div>
+                                <div class="person-role">Komisaris</div>
+                            </div>
+
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/r-muharam.jpg') }}" alt="R. Muharam Perbawamukti">
+                                </div>
+                                <div class="person-name">R. Muharam Perbawamukti</div>
+                                <div class="person-role">Komisaris</div>
+                            </div>
+
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/neno-hamriono.jpg') }}" alt="Neno Hamriono">
+                                </div>
+                                <div class="person-name">Neno Hamriono</div>
+                                <div class="person-role">Komisaris</div>
+                            </div>
+
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/verry-surya.jpg') }}" alt="Verry Surya Hendrawan">
+                                </div>
+                                <div class="person-name">Verry Surya Hendrawan</div>
+                                <div class="person-role">Komisaris</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="org-panel">
+                        <div class="org-title">Board of Director</div>
+
+                        <div class="org-top">
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/mohammad-firdaus.jpg') }}" alt="Mohammad Firdaus">
+                                </div>
+                                <div class="person-name">Mohammad Firdaus</div>
+                                <div class="person-role">President Director</div>
+                            </div>
+                        </div>
+
+                        <div class="org-row three">
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/fandi-wijaya.jpg') }}" alt="Fandi Wijaya">
+                                </div>
+                                <div class="person-name">Fandi Wijaya</div>
+                                <div class="person-role">Planning Director</div>
+                            </div>
+
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/setio-nuranto.jpg') }}" alt="Setio Nuranto">
+                                </div>
+                                <div class="person-name">Setio Nuranto</div>
+                                <div class="person-role">Finance &amp; Risk Management Director</div>
+                            </div>
+
+                            <div class="person-card">
+                                <div class="person-photo">
+                                    <img src="{{ asset('images/leadership/amin-kusumawati.jpg') }}" alt="Amin Kusumawati">
+                                </div>
+                                <div class="person-name">Amin Kusumawati</div>
+                                <div class="person-role">Business Director</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -327,3 +572,4 @@
 
 </body>
 </html>
+
