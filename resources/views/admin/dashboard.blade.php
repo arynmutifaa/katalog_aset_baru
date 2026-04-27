@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 
@@ -48,6 +47,7 @@
         }
 
         .sidebar button {
+            width: 100%;
             padding: 14px;
             border-radius: 12px;
             border: none;
@@ -63,7 +63,7 @@
         }
 
         .main {
-            margin-left: 260px;
+            margin-left: 300px;
             padding: 30px 30px 30px 20px;
             width: 100%;
             position: relative;
@@ -102,8 +102,9 @@
             margin-bottom: 25px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .navbar h3 {
@@ -112,10 +113,12 @@
             background: linear-gradient(90deg, #E30613, #ff4d57);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: center;
         }
 
         .nav-buttons {
-            margin-left: auto;
+            position: absolute;
+            right: 30px;
             display: flex;
             gap: 18px;
         }
@@ -257,6 +260,7 @@
             }
 
             .nav-buttons {
+                position: static;
                 margin-left: 0;
             }
 
@@ -391,4 +395,3 @@ Jombang & Mojokerto
 </body>
 
 </html>
-```
