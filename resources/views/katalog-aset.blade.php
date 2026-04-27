@@ -155,6 +155,7 @@
             transition:0.3s;
             border:1px solid #eceef5;
             text-decoration:none;
+            color:inherit;
         }
 
         .outline-item:hover{
@@ -289,6 +290,7 @@
                 <div class="outline-top"></div>
 
                 <div class="outline-list">
+
                     <a href="{{ route('company.profile') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">01</div>
@@ -302,7 +304,7 @@
                         <div class="item-arrow">›</div>
                     </a>
 
-                    <div class="outline-item">
+                    <a href="{{ route('our.capabilities') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">02</div>
                             <div class="item-text">
@@ -313,9 +315,9 @@
                             </div>
                         </div>
                         <div class="item-arrow">›</div>
-                    </div>
+                    </a>
 
-                    <div class="outline-item">
+                    <a href="{{ route('product.portfolio') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">03</div>
                             <div class="item-text">
@@ -326,9 +328,9 @@
                             </div>
                         </div>
                         <div class="item-arrow">›</div>
-                    </div>
+                    </a>
 
-                    <div class="outline-item">
+                    <a href="{{ route('business.scheme') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">04</div>
                             <div class="item-text">
@@ -339,9 +341,9 @@
                             </div>
                         </div>
                         <div class="item-arrow">›</div>
-                    </div>
+                    </a>
 
-                    <div class="outline-item">
+                    <a href="{{ route('gallery') }}" class="outline-item">
                         <div class="item-left">
                             <div class="item-number">05</div>
                             <div class="item-text">
@@ -352,9 +354,9 @@
                             </div>
                         </div>
                         <div class="item-arrow">›</div>
-                    </div>
-                </div>
+                    </a>
 
+                </div>
             </div>
 
         </div>
