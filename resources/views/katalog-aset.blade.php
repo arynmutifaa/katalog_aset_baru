@@ -308,7 +308,7 @@
                         <div class="item-left">
                             <div class="item-number">02</div>
                             <div class="item-text">
-                                <h3>Our Capabilities</h3>
+                                <h3>Our Internal Capabilities</h3>
                                 <p>
                                     Menjelaskan kemampuan internal dan dukungan sumber daya perusahaan.
                                 </p>
