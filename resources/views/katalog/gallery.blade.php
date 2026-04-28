@@ -189,16 +189,20 @@
         }
 
         .menu-card{
-            border:none;
-            cursor:pointer;
-            text-align:left;
-            background:#f8f9fc;
-            border:1px solid #eceef5;
-            border-radius:22px;
-            padding:24px;
-            transition:0.3s;
-            min-height:155px;
-        }
+    border:none;
+    cursor:pointer;
+    text-align:left;
+    background:#f8f9fc;
+    border:1px solid #eceef5;
+    border-radius:22px;
+    padding:24px;
+    transition:0.3s;
+    min-height:180px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
 
         .menu-card:hover{
             transform:translateY(-6px);
@@ -206,25 +210,31 @@
         }
 
         .menu-number{
-            width:48px;
-            height:48px;
-            border-radius:14px;
-            background:#E30613;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:800;
-            margin-bottom:14px;
-            box-shadow:0 8px 18px rgba(227,6,19,0.22);
-        }
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    background:#E30613;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:800;
+    margin-bottom:16px;
+    box-shadow:0 8px 18px rgba(227,6,19,0.22);
+
+    flex-shrink:0;
+}
 
         .menu-card h3{
-            font-size:21px;
-            color:#2c2f38;
-            margin-bottom:8px;
-            font-weight:800;
-        }
+    font-size:21px;
+    color:#2c2f38;
+    margin-bottom:8px;
+    font-weight:800;
+
+    min-height:52px;
+}
 
         .menu-card p{
             font-size:14px;
