@@ -188,17 +188,20 @@
         }
 
         .portfolio-card{
-            position:relative;
-            background:#d9d7d7;
-            border-radius:18px;
-            padding:58px 16px 20px;
-            cursor:pointer;
-            border:none;
-            text-align:left;
-            transition:0.3s;
-            min-height:390px;
-            overflow:visible;
-        }
+    position:relative;
+    background:#d9d7d7;
+    border-radius:18px;
+    padding:58px 16px 20px;
+    cursor:pointer;
+    border:none;
+    text-align:left;
+    transition:0.3s;
+    min-height:390px;
+    overflow:visible;
+
+    display:flex;
+    flex-direction:column;
+}
 
         .portfolio-card:hover{
             transform:translateY(-6px);
@@ -222,15 +225,18 @@
         }
 
         .card-icon{
-            width:95px;
-            height:95px;
-            margin:0 auto 18px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:58px;
-            color:#111;
-        }
+    width:95px;
+    height:120px;
+    margin:0 auto 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:58px;
+    color:#111;
+    line-height:1;
+}
 
         .service-list{
             display:flex;
