@@ -16,7 +16,7 @@
         }
 
         body{
-            background:#f4f6fb;
+            background:#101525;
             color:#222;
         }
 
@@ -30,8 +30,8 @@
             align-items:center;
             justify-content:space-between;
             padding:14px 60px;
-            background: rgba(44,47,56,0.88);
-            backdrop-filter: blur(10px);
+            background:rgba(44,47,56,0.88);
+            backdrop-filter:blur(10px);
             border-bottom:1px solid rgba(255,255,255,0.08);
         }
 
@@ -49,7 +49,7 @@
             color:white;
             font-size:18px;
             font-weight:600;
-        }
+}
 
         .nav-btn{
             display:inline-block;
@@ -68,17 +68,157 @@
             box-shadow:0 8px 20px rgba(227,6,19,0.35);
         }
 
+        /* BACKGROUND SAMA UNTUK COVER DAN OUTLINE */
+        .cover-page,
         .outline-page{
-            min-height:100vh;
-            padding:120px 60px 60px;
             background:
                 linear-gradient(
-                    135deg,
-                    rgba(19,23,34,0.90) 0%,
-                    rgba(22,26,38,0.88) 45%,
-                    rgba(123,10,19,0.82) 100%
+                    90deg,
+                    rgba(8,12,32,0.88) 0%,
+                    rgba(10,15,38,0.82) 42%,
+                    rgba(80,16,36,0.78) 68%,
+                    rgba(180,10,24,0.70) 100%
                 ),
                 url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
+            background-attachment:fixed;
+        }
+
+        /* ================= COVER AWAL ================= */
+        .cover-page{
+            min-height:100vh;
+            padding:120px 60px 0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .cover-content{
+            position:relative;
+            width:100%;
+            max-width:1250px;
+            min-height:78vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+
+            /* GARIS TEPI LUAR DIPERJELAS */
+            border:2px solid rgba(255,255,255,0.55);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,0.28),
+                0 0 0 2px rgba(255,255,255,0.28),
+                inset 0 0 0 1px rgba(255,255,255,0.18);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(8,12,32,0.88) 0%,
+                    rgba(10,15,38,0.82) 42%,
+                    rgba(80,16,36,0.78) 68%,
+                    rgba(180,10,24,0.70) 100%
+                ),
+                url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
+        }
+
+        /* GARIS TEPI DALAM */
+        .cover-content::before{
+            content:"";
+            position:absolute;
+            inset:18px;
+            border:2px solid rgba(255,255,255,0.65);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.25),
+                inset 0 0 18px rgba(255,255,255,0.10);
+            pointer-events:none;
+            z-index:1;
+        }
+
+        .cover-text{
+            position:relative;
+            z-index:2;
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:flex-start;
+            padding:80px 70px 40px;
+            color:white;
+        }
+
+        .cover-text h1{
+            font-size:78px;
+            line-height:0.95;
+            font-weight:800;
+            letter-spacing:1px;
+            margin-bottom:18px;
+            text-transform:uppercase;
+            max-width:900px;
+        }
+
+        .cover-text p{
+            font-size:24px;
+            line-height:1.5;
+            font-weight:400;
+            font-style:italic;
+            color:rgba(255,255,255,0.92);
+            max-width:none;
+            white-space:nowrap;
+        }
+
+        .cover-footer{
+            position:relative;
+            z-index:2;
+            width:82%;
+            background:white;
+            display:flex;
+            align-items:flex-end;
+            justify-content:space-between;
+            gap:20px;
+            padding:26px 34px 20px;
+            border-top:2px solid rgba(0,0,0,0.12);
+            border-right:2px solid rgba(0,0,0,0.12);
+        }
+
+        .cover-footer-left{
+            flex:1;
+        }
+
+        .cover-footer-left h2{
+            font-size:28px;
+            line-height:1.35;
+            font-weight:800;
+            color:#111;
+            text-transform:uppercase;
+            margin-bottom:12px;
+        }
+
+        .cover-footer-line{
+            width:100%;
+            max-width:520px;
+            height:4px;
+            background:#111;
+            border-radius:20px;
+        }
+
+        .cover-footer-right{
+            min-width:auto;
+            display:flex;
+            align-items:flex-end;
+            justify-content:flex-end;
+            gap:18px;
+        }
+
+        .cover-year{
+            font-size:28px;
+            font-weight:800;
+            color:#111;
+            line-height:1;
+        }
+
+        /* ================= OUTLINE PAGE ================= */
+        .outline-page{
+            min-height:100vh;
+            padding:80px 60px 60px;
             display:flex;
             align-items:center;
             justify-content:center;
@@ -88,19 +228,19 @@
             width:100%;
             max-width:1250px;
             display:grid;
-            grid-template-columns: 1fr 1.25fr;
+            grid-template-columns:1fr 1.25fr;
             gap:28px;
             align-items:stretch;
         }
 
         .outline-left{
-            background: rgba(255,255,255,0.10);
+            background:rgba(255,255,255,0.10);
             border:1px solid rgba(255,255,255,0.12);
             border-radius:28px;
             padding:40px 35px;
             color:white;
             box-shadow:0 18px 40px rgba(0,0,0,0.18);
-            backdrop-filter: blur(10px);
+            backdrop-filter:blur(10px);
             display:flex;
             flex-direction:column;
             justify-content:center;
@@ -122,7 +262,8 @@
         }
 
         .outline-right{
-            background: rgba(255,255,255,0.95);
+            background:rgba(255,255,255,0.95);
+            border:1px solid rgba(255,255,255,0.45);
             border-radius:28px;
             padding:26px;
             box-shadow:0 18px 40px rgba(0,0,0,0.18);
@@ -214,6 +355,27 @@
         }
 
         @media(max-width:1100px){
+            .cover-text{
+                padding:70px 40px 30px;
+            }
+
+            .cover-text h1{
+                font-size:58px;
+            }
+
+            .cover-text p{
+                font-size:20px;
+                white-space:normal;
+            }
+
+            .cover-footer{
+                width:90%;
+            }
+
+            .cover-footer-left h2{
+                font-size:24px;
+            }
+
             .outline-wrapper{
                 grid-template-columns:1fr;
             }
@@ -231,8 +393,57 @@
                 gap:12px;
             }
 
+            .cover-page{
+                padding:120px 20px 0;
+            }
+
+            .cover-content{
+                min-height:auto;
+            }
+
+            .cover-content::before{
+                inset:10px;
+                border:1.5px solid rgba(255,255,255,0.55);
+            }
+
+            .cover-text{
+                padding:50px 24px 28px;
+            }
+
+            .cover-text h1{
+                font-size:38px;
+                line-height:1.05;
+            }
+
+            .cover-text p{
+                font-size:16px;
+                white-space:normal;
+            }
+
+            .cover-footer{
+                width:100%;
+                flex-direction:column;
+                align-items:flex-start;
+                padding:20px 24px;
+            }
+
+            .cover-footer-left h2{
+                font-size:20px;
+            }
+
+            .cover-footer-right{
+                min-width:auto;
+                width:100%;
+                justify-content:flex-end;
+            }
+
+            .cover-year{
+                font-size:22px;
+            }
+
             .outline-page{
-                padding:120px 20px 40px;
+                padding:60px 20px 40px;
+                background-attachment:scroll;
             }
 
             .outline-left,
@@ -277,6 +488,26 @@
 
         <a href="{{ route('home') }}" class="nav-btn">Back Home</a>
     </div>
+
+    <section class="cover-page">
+        <div class="cover-content">
+            <div class="cover-text">
+                <h1>TELKOM PROPERTY</h1>
+                <p>The most preferred technology-led property company in Indonesia</p>
+            </div>
+
+            <div class="cover-footer">
+                <div class="cover-footer-left">
+                    <h2>TELKOM PROPERTY / PT GSD</h2>
+                    <div class="cover-footer-line"></div>
+                </div>
+
+                <div class="cover-footer-right">
+                    <div class="cover-year">2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="outline-page">
         <div class="outline-wrapper">
