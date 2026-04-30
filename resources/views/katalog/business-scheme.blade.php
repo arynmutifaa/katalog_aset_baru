@@ -485,17 +485,17 @@
             align-items:start;
         }
 
-        .cert-images{
-            display:grid;
-            grid-template-columns:repeat(2, 1fr);
-            gap:10px;
-        }
+.cert-images{
+    display:block;
+}
 
-        .cert-images img{
-            width:100%;
-            border-radius:6px;
-            border:1px solid #ddd;
-        }
+.cert-images img{
+    width:100%;
+    height:auto;
+    border-radius:0;
+    border:none;
+    display:block;
+}
 
         .cert-list{
             font-size:14px;
@@ -578,6 +578,29 @@
                 font-size:11px;
             }
         }
+        .catalog-new{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.catalog-desc{
+    background:#d9d7d7;
+    border:none;
+    padding:20px;
+    border-radius:10px;
+    font-size:15px;
+    line-height:1.7;
+    color:#111;
+}
+
+.catalog-img{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    border:1px solid #ddd;
+    display:block;
+}
     </style>
 </head>
 <body>
@@ -728,11 +751,7 @@
                         <div class="modal-title">Use Case pengadaan melalui e-katalog & LPSE</div>
                         <div class="modal-subtitle">Jasa Kebersihan Petugas & Pengawas Jasa Kebersihan</div>
 
-                        <div class="image-grid-3">
-                            <img src="{{ asset('images/business/usecase-cleaning-1.jpg') }}" class="image-card image-tall" alt="Use Case Cleaning 1">
-                            <img src="{{ asset('images/business/usecase-cleaning-2.jpg') }}" class="image-card image-tall" alt="Use Case Cleaning 2">
-                            <img src="{{ asset('images/business/usecase-cleaning-detail.jpg') }}" class="image-card" alt="Use Case Detail">
-                        </div>
+                        <img src="{{ asset('images/business/usecase-cleaning.jpg') }}" class="image-wide" alt="Use Case Cleaning">
                     </div>
 
                     <div class="content-section">
@@ -748,21 +767,18 @@
                 modalContent.innerHTML = `
                     <div class="modal-title">Katalog Elektronik</div>
 
-                    <div class="image-grid-2">
-                        <div class="catalog-desc">
-                            <b>Katalog Elektronik</b> adalah aplikasi elektronik yang memberikan kemudahan
-                            bagi kementerian/lembaga/instansi dalam proses pengadaan barang dan jasa.
-                            Menjamin kepastian spesifikasi teknik akan barang/jasa yang dipesan dan
-                            harga yang ditawarkan juga seragam.
-                        </div>
+        <div class="catalog-new">
+    
+    <div class="catalog-desc">
+        <b>Katalog Elektronik</b> adalah aplikasi elektronik yang memberikan kemudahan
+        bagi kementerian/lembaga/instansi dalam proses pengadaan barang dan jasa.
+        Menjamin kepastian spesifikasi teknik akan barang/jasa yang dipesan dan
+        harga yang ditawarkan juga seragam.
+    </div>
 
-                        <div>
-                            <img src="{{ asset('images/business/katalog-elektronik.jpg') }}" class="image-wide" alt="Katalog Elektronik">
-                            <div class="catalog-note">
-                                <b>Cat :</b> GSD telah terdaftar di Katalog Elektronik LKPP
-                            </div>
-                        </div>
-                    </div>
+    <img src="{{ asset('images/business/katalog-elektronik.jpg') }}" class="catalog-img" alt="Katalog Elektronik">
+
+</div>
                 `;
             }
 
@@ -863,14 +879,9 @@
                         <div class="modal-title">Sertifikasi Lainnya</div>
 
                         <div class="cert-grid">
-                            <div class="cert-images">
-                                <img src="{{ asset('images/business/sertifikat-1.jpg') }}" alt="Sertifikat 1">
-                                <img src="{{ asset('images/business/sertifikat-2.jpg') }}" alt="Sertifikat 2">
-                                <img src="{{ asset('images/business/sertifikat-3.jpg') }}" alt="Sertifikat 3">
-                                <img src="{{ asset('images/business/sertifikat-4.jpg') }}" alt="Sertifikat 4">
-                                <img src="{{ asset('images/business/sertifikat-5.jpg') }}" alt="Sertifikat 5">
-                                <img src="{{ asset('images/business/sertifikat-6.jpg') }}" alt="Sertifikat 6">
-                            </div>
+                           <div class="cert-images">
+    <img src="{{ asset('images/business/sertifikasi-lainnya.jpg') }}" alt="Sertifikasi Lainnya">
+</div>
 
                             <div class="cert-list">
                                 <p>

@@ -465,20 +465,62 @@
         }
 
         .pm-image-grid,
-        .ps-image-grid{
+        .pm-image-grid{
             display:grid;
-            grid-template-columns:repeat(2, 1fr);
+            grid-template-columns:1fr 1fr;
             gap:10px;
         }
 
-        .pm-image-grid img,
-        .ps-image-grid img{
+        .pm-image-grid img{
             width:100%;
-            height:140px;
             object-fit:cover;
             border-radius:6px;
             background:#eee;
         }
+
+        .pm-image-grid img:nth-child(1),
+        .pm-image-grid img:nth-child(2){
+            height:155px;
+        }
+
+        .pm-image-grid img:nth-child(3){
+            grid-column:1 / -1;
+            height:150px;
+        }
+
+        .pm-image-grid img:nth-child(4){
+            grid-column:1 / -1;
+            height:150px;
+        }
+        .pm-image-grid img:nth-child(5),
+        .pm-image-grid img:nth-child(6){
+            display:none;
+        }
+
+        .pm-image-grid img,
+        .ps-image-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+    .ps-image-grid img{
+        width:100%;
+        height:180px;
+        object-fit:cover;
+        border-radius:0;
+        background:#eee;
+    }
+    .ps-image-grid img:nth-child(1){
+        grid-column:1 / -1;
+        height:210px;
+    }
+    .ps-image-grid img:nth-child(2),
+    .ps-image-grid img:nth-child(3),
+    .ps-image-grid img:nth-child(4),
+    .ps-image-grid img:nth-child(5){
+        height:190px;
+    }
 
         .pm-image-full,
         .ps-image-full{
@@ -579,19 +621,28 @@
             padding-left:18px;
         }
 
-        .ps-small-gallery{
-            display:grid;
-            grid-template-columns:repeat(3, 1fr);
-            gap:12px;
-            align-items:start;
-        }
+       .ps-small-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    align-items:start;
+}
 
         .ps-small-gallery img{
             width:100%;
-            height:150px;
+            height:170px;
             object-fit:cover;
-            border-radius:6px;
+            border-radius:0;
             background:#eee;
+        }
+
+        .ps-small-gallery img:nth-child(1){
+            grid-column:1 / -1;
+            height:170px;
+        }
+
+        .ps-small-gallery img:nth-child(6){
+            display:none;
         }
 
         .ps-keywords{
@@ -760,6 +811,45 @@
                 height:160px !important;
             }
         }
+        .tms-new-layout{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+        .tms-top{
+            width:100%;
+            height:160px;
+            object-fit:cover;
+            border-radius:6px;
+        }
+
+        .tms-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+        }
+
+        .tms-grid img{
+            width:100%;
+            height:120px;
+            object-fit:cover;
+            border-radius:6px;
+        }
+
+        .tms-bottom{
+            width:100%;
+            height:130px;
+            object-fit:cover;
+            border-radius:6px;
+        }
+        .tms-single-image img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    border-radius:6px;
+    display:block;
+}
     </style>
 </head>
 <body>
@@ -1332,18 +1422,10 @@
                                     </ul>
                                 </div>
                             </div>
-
-                            <div class="tms-images">
-                                <img src="{{ asset('images/portfolio/tms-building.jpg') }}" class="tms-main-img" alt="Transportation Building">
-
-                                <div class="tms-side-grid">
-                                    <img src="{{ asset('images/portfolio/tms-driver.jpg') }}" alt="Driver Service">
-                                    <img src="{{ asset('images/portfolio/tms-fleet.jpg') }}" alt="Fleet Service">
-                                    <img src="{{ asset('images/portfolio/tms-trends.jpg') }}" alt="Trends Online">
-                                    <img src="{{ asset('images/portfolio/tms-fms.jpg') }}" alt="Fleet Management System">
-                                    <img src="{{ asset('images/portfolio/tms-vehicles.jpg') }}" class="tms-vehicle-img" alt="Vehicle Fleet">
-                                </div>
-                            </div>
+<div class="tms-single-image">
+    <img src="{{ asset('images/portfolio/tms-layout.jpg') }}" alt="Transportation Management Service">
+</div>
+                           
                         </div>
                     </div>
                 `;

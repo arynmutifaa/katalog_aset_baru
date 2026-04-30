@@ -588,6 +588,20 @@
                 height:90px;
             }
         }
+      .client-partner{
+    display:flex;
+    justify-content:center;  
+    align-items:center;
+    padding:20px 0;
+}
+
+.client-partner img{
+    width:auto;             
+    max-width:900px;        
+    height:auto;
+    object-fit:contain;
+    display:block;
+}
     </style>
 </head>
 <body>
@@ -704,23 +718,9 @@
                         <div class="partner-box">
                             <div class="vertical-label">Client & Partner</div>
 
-                            <div class="partner-logo-grid">
-                                <img src="{{ asset('images/gallery/logo-telkom-indonesia.jpg') }}" alt="Telkom Indonesia">
-                                <img src="{{ asset('images/gallery/logo-telkomsel.jpg') }}" alt="Telkomsel">
-                                <img src="{{ asset('images/gallery/logo-skkmigas.jpg') }}" alt="SKK Migas">
-                                <img src="{{ asset('images/gallery/logo-tiki.jpg') }}" alt="TIKI">
-                                <img src="{{ asset('images/gallery/logo-pertamina.jpg') }}" alt="Pertamina">
-                                <img src="{{ asset('images/gallery/logo-bri.jpg') }}" alt="BRI">
-                                <img src="{{ asset('images/gallery/logo-mcd.jpg') }}" alt="McDonalds">
-                                <img src="{{ asset('images/gallery/logo-indofood.jpg') }}" alt="Indofood">
-                                <img src="{{ asset('images/gallery/logo-cimb.jpg') }}" alt="CIMB Niaga">
-                                <img src="{{ asset('images/gallery/logo-mandiri.jpg') }}" alt="Mandiri">
-                                <img src="{{ asset('images/gallery/logo-starbucks.jpg') }}" alt="Starbucks">
-                                <img src="{{ asset('images/gallery/logo-pizzahut.jpg') }}" alt="Pizza Hut">
-                                <img src="{{ asset('images/gallery/logo-bca.jpg') }}" alt="BCA">
-                                <img src="{{ asset('images/gallery/logo-bi.jpg') }}" alt="Bank Indonesia">
-                                <img src="{{ asset('images/gallery/logo-toyota.jpg') }}" alt="Toyota">
-                            </div>
+   <div class="client-partner">
+    <img src="{{ asset('images/clients/client-partner.png') }}" alt="Client Partner">
+</div>
                         </div>
                     </div>
                 `;
@@ -731,7 +731,7 @@
                     <div class="content-section">
                         <div class="modal-title">Award & Recognition</div>
 
-                        <img src="{{ asset('images/gallery/building-experience.jpg') }}" class="wide-image" alt="Building Management Experience">
+                        <img src="{{ asset('images/gallery/award-recognition.jpg') }}" class="wide-image" alt="Building Management Experience">
 
                         <div class="experience-text">
                             Our experience in national wide building management are all Telkom's building from west to east of Indonesia
