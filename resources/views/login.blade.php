@@ -83,6 +83,50 @@ body{
     font-size:13px;
     margin-bottom:10px;
 }
+
+.divider{
+    display:flex;
+    align-items:center;
+    margin:20px 0;
+    gap:10px;
+    color:#aaa;
+    font-size:13px;
+}
+
+.divider::before,
+.divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
+
+.google-btn{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:white;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:14px;
+    font-weight:500;
+    color:#444;
+    text-decoration:none;
+    transition:background 0.2s;
+}
+
+.google-btn:hover{
+    background:#f5f5f5;
+}
+
+.google-btn img{
+    width:20px;
+    height:20px;
+}
 </style>
 </head>
 
@@ -93,7 +137,6 @@ body{
     <div class="logo">Telkom Property</div>
     <div class="subtitle">Silakan login untuk mengakses</div>
 
-    {{-- tampilkan error --}}
     @if(session('error'))
         <div class="error">
             {{ session('error') }}
@@ -117,6 +160,13 @@ body{
         <button type="submit" class="login-btn">Login</button>
 
     </form>
+
+    <div class="divider">atau</div>
+
+    <a href="{{ route('auth.google') }}" class="google-btn">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+        Login dengan Google
+    </a>
 
 </div>
 
