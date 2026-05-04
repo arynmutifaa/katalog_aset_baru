@@ -498,7 +498,7 @@
 
             <div class="cover-footer">
                 <div class="cover-footer-left">
-                    <h2>TELKOM PROPERTY / PT GSD</h2>
+                    <h2>PT. GRAHA SARANA DUTA</h2>
                     <div class="cover-footer-line"></div>
                 </div>
 
