@@ -49,14 +49,11 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-// Google OAuth
-Route::get('/auth/google',          [LoginController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('auth.google.callback');
-
 Route::middleware(['auth'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
+
 
         Route::get('/dashboard', [AdminController::class, 'dashboard'])
             ->name('dashboard');
