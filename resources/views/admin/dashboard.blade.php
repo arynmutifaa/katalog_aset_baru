@@ -277,45 +277,45 @@
 
         <form method="GET" action="{{ route('admin.dashboard') }}">
 
-            <input type="text" name="search" placeholder="Mencari lokasi...">
+            <input type="text" name="search" placeholder="Mencari lokasi..." value="{{ request('search') }}">
 
-<select name="daerah">
+            <select name="daerah">
 
-<option value="">Semua Daerah</option>
+                <option value="">Semua Daerah</option>
 
-<option value="pasuruan" {{ request('daerah')=='pasuruan' ? 'selected' : '' }}>
-Pasuruan
-</option>
+                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>
+                    Pasuruan
+                </option>
 
-<option value="jember" {{ request('daerah')=='jember' ? 'selected' : '' }}>
-Jember
-</option>
+                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>
+                    Jember
+                </option>
 
-<option value="banyuwangi" {{ request('daerah')=='banyuwangi' ? 'selected' : '' }}>
-Banyuwangi
-</option>
+                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>
+                    Banyuwangi
+                </option>
 
-<option value="situbondo" {{ request('daerah')=='situbondo' ? 'selected' : '' }}>
-Situbondo & Bondowoso
-</option>
+                <option value="situbondo" {{ request('daerah') == 'situbondo' ? 'selected' : '' }}>
+                    Situbondo & Bondowoso
+                </option>
 
-<option value="lumajang" {{ request('daerah')=='lumajang' ? 'selected' : '' }}>
-Lumajang
-</option>
+                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>
+                    Lumajang
+                </option>
 
-<option value="probolinggo" {{ request('daerah')=='probolinggo' ? 'selected' : '' }}>
-Probolinggo
-</option>
+                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>
+                    Probolinggo
+                </option>
 
-<option value="sidoarjo" {{ request('daerah')=='sidoarjo' ? 'selected' : '' }}>
-Sidoarjo
-</option>
+                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>
+                    Sidoarjo
+                </option>
 
-<option value="jombang" {{ request('daerah')=='jombang' ? 'selected' : '' }}>
-Jombang & Mojokerto
-</option>
+                <option value="jombang" {{ request('daerah') == 'jombang' ? 'selected' : '' }}>
+                    Jombang & Mojokerto
+                </option>
 
-</select>
+            </select>
 
             <button type="submit">Cari</button>
 
@@ -346,29 +346,30 @@ Jombang & Mojokerto
 
         </div>
 
-<div class="cards">
+        <div class="cards">
 
-    <div class="card">
-        <h4>Gedung Tersedia</h4>
-        <h2>{{ $properties->where('area_id','bangunan')->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Gedung Tersedia</h4>
+                <h2>{{ $properties->where('area_id', 'bangunan')->count() }}</h2>
+            </div>
 
-    <div class="card">
-        <h4>Total Tanah Kosong</h4>
-        <h2>{{ $properties->where('area_id','tanah_kosong')->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Total Tanah Kosong</h4>
+                <h2>{{ $properties->where('area_id', 'tanah_kosong')->count() }}</h2>
+            </div>
 
-    <div class="card">
-        <h4>Total Property</h4>
-        <h2>{{ $properties->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Total Property</h4>
+                <h2>{{ $properties->count() }}</h2>
+            </div>
 
-</div>
+        </div>
 
         <div class="property-grid">
 
             @foreach ($properties as $property)
-                <a href="{{ route('admin.property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+                <a href="{{ route('admin.property.show', $property->id) }}"
+                    style="text-decoration:none;color:inherit;">
 
                     <div class="property-card">
 

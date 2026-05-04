@@ -11,12 +11,10 @@ class PropertyController extends Controller
     {
         $query = PropertyDetail::query();
 
-        // Search lokasi
         if ($request->search) {
             $query->where('alamat', 'like', '%' . $request->search . '%');
         }
 
-        // Filter daerah
         if ($request->daerah) {
             $query->where('alamat', 'like', '%' . $request->daerah . '%');
         }
