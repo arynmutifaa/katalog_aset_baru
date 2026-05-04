@@ -257,7 +257,16 @@
             </tr>
             <tr>
                 <td>TITIK KOORDINAT</td>
-                <td>{{ $property->titik_koordinat }}</td>
+                <td>
+                    @if ($property->titik_koordinat)
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ $property->titik_koordinat }}"
+                            target="_blank" style="color: #E30613; text-decoration: none; font-weight: 600;">
+                            📍 {{ $property->titik_koordinat }}
+                        </a>
+                    @else
+                        -
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>SPACE IDLE GEDUNG</td>
