@@ -484,12 +484,17 @@
             display: flex;
         }
 
-        .preview-overlay img {
-            max-width: 92vw;
-            max-height: 88vh;
-            border-radius: 14px;
-            background: #fff;
-        }
+       .preview-overlay img {
+    max-width: 85vw;
+    max-height: 85vh;
+    min-width: 500px;
+    min-height: 500px;
+    width: 70vw;
+    height: 70vh;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #fff;
+}
 
         .preview-close {
             position: absolute;
@@ -604,6 +609,82 @@
             object-fit: contain;
             display: block;
         }
+
+        .photo-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .photo-grid-2col img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .photo-grid-2col img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .photo-wide {
+            grid-column: 1 / -1;
+            height: 180px !important;
+        }
+
+        .photo-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .photo-stack img {
+            width: 100%;
+            height: 87px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .pd-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            padding: 8px;
+        }
+
+
+        .pd-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+  .pd-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.pd-big {
+    grid-column: 1 / 3;
+    aspect-ratio: 2 / 1;
+}
+
+.pd-wide {
+    aspect-ratio: 4 / 1;
+}
+
+.pd-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
     </style>
 </head>
 
@@ -744,39 +825,44 @@
                 `;
             } else if (type === 'gallery') {
                 modalContent.innerHTML = `
-                    <div class="content-section">
-                        <div class="modal-title">Gallery</div>
-                        <div class="modal-subtitle">Dokumentasi layanan dan project Telkom Property</div>
+        <div class="content-section">
+            <div class="modal-title">Gallery</div>
+            <div class="modal-subtitle">Dokumentasi layanan dan project Telkom Property</div>
 
-                        <div class="photo-category-grid">
-                            <div class="photo-panel">
-                                <div class="photo-title">Property Development</div>
-                                <div class="photo-grid">
-                                    ${galleryImages('property-development', 15)}
-                                </div>
-                            </div>
+            <div class="photo-category-grid">
 
-                            <div class="photo-panel">
-                                <div class="photo-title">Project Solution</div>
-                                <div class="photo-grid">
-                                    ${galleryImages('project-solution', 15)}
-                                </div>
-                            </div>
+               <div class="photo-panel">
+    <div class="photo-title">Property Development</div>
+    <div class="pd-grid">
+       <img src="{{ asset('images/gallery/property-development-1.jpeg') }}" class="pd-big" onclick="openPreview(this.src)">
+<img src="{{ asset('images/gallery/property-development-2.jpeg') }}" class="pd-wide" onclick="openPreview(this.src)">
+        <img src="{{ asset('images/gallery/property-development-3.jpeg') }}" class="pd-small-bot" onclick="openPreview(this.src)">
+        ${galleryImages2col('property-development', 4, 17)}
+    </div>
+</div>
 
-                            <div class="photo-panel">
-                                <div class="photo-title">Property Management</div>
-                                <div class="photo-grid">
-                                    ${galleryImages('property-management', 9)}
-                                </div>
-
-                                <div class="photo-title">Facility Management</div>
-                                <div class="photo-grid">
-                                    ${galleryImages('facility-management', 6)}
-                                </div>
-                            </div>
-                        </div>
+                <div class="photo-panel">
+                    <div class="photo-title">Project Solution</div>
+                    <div class="photo-grid photo-grid-2col">
+                        ${galleryImages2col('project-solution', 1, 14)}
                     </div>
-                `;
+                </div>
+
+                <div class="photo-panel">
+                    <div class="photo-title">Property Management</div>
+                    <div class="photo-grid photo-grid-2col">
+                        ${galleryImages2col('property-management', 1, 6)}
+                    </div>
+
+                    <div class="photo-title" style="margin-top:10px">Facility Management</div>
+                    <div class="photo-grid photo-grid-2col">
+                        ${galleryImages2col('facility-management', 1, 6)}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    `;
             }
 
             document.getElementById('modalOverlay').classList.add('active');
@@ -784,17 +870,21 @@
 
         function galleryImages(folder, total) {
             let html = '';
-
             for (let i = 1; i <= total; i++) {
                 const src = `{{ asset('images/gallery') }}/${folder}-${i}.jpg`;
-
-                html += `
-                    <img src="${src}" alt="${folder} ${i}" onclick="openPreview('${src}')">
-                `;
+                html += `<img src="${src}" alt="${folder} ${i}" onclick="openPreview('${src}')">`;
             }
-
             return html;
         }
+
+       function galleryImages2col(folder, start, end) {
+    let html = '';
+    for (let i = start; i <= end; i++) {
+        const src = `{{ asset('images/gallery') }}/${folder}-${i}.jpeg`;
+        html += `<img src="${src}" alt="${folder} ${i}" onclick="openPreview('${src}')">`;
+    }
+    return html;
+}
 
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
