@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Property;
+use App\Models\PropertyDetail;
 
 class PropertySeeder extends Seeder
 {
     public function run(): void
     {
-        Property::create([
+        PropertyDetail::create([
             'nama_gedung' => 'STO ASEM BAGUS',
             'area_id' => 'bangunan',
             'alamat' => 'JL. RAYA ASEM BAGUS DESA GUDANG SITUBONDO',
@@ -32,7 +32,7 @@ class PropertySeeder extends Seeder
             'fasilitas' => 'GENSET DAN AIR PDAM',
         ]);
 
-        Property::create([
+        PropertyDetail::create([
             'nama_gedung' => 'EX YAN PANARUKAN',
             'area_id' => 'bangunan',
             'alamat' => 'JL. RAYA PANARUKAN SITUBONDO',
@@ -55,7 +55,7 @@ class PropertySeeder extends Seeder
             'fasilitas' => null,
         ]);
 
-        Property::create([
+        PropertyDetail::create([
             'nama_gedung' => 'STO MLANDINGAN',
             'area_id' => 'bangunan',
             'alamat' => 'JL. RAYA MLANDINGAN, SITUBONDO',
