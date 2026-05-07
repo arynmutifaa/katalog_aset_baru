@@ -59,12 +59,12 @@
 <body>
 <div class="container">
 
-    <a href="{{ route('admin.property.create') }}" class="back">← Kembali ke Tambah Property</a>
+    <a href="{{ route('admin.property.create') }}" class="back">← Kembali</a>
 
-    <div class="header">📥 Import Data Property dari Excel</div>
+    <div class="header">Import Data Property dari Excel</div>
 
     @if(session('success'))
-        <div class="success">✅ {{ session('success') }}</div>
+        <div class="success">{{ session('success') }}</div>
     @endif
 
     <div class="info">
@@ -73,13 +73,13 @@
     </div>
 
     <!-- DOWNLOAD TEMPLATE -->
-    <div class="section-title">⬇️ Step 1 — Download template Excel dulu</div>
+    <div class="section-title">Step 1 — Template Exel</div>
     <a href="{{ route('admin.property.template') }}" class="btn-download">Download Template Excel</a>
 
     <hr class="divider">
 
     <!-- UPLOAD & IMPORT -->
-    <div class="section-title">📤 Step 2 — Upload file Excel yang sudah diisi</div>
+    <div class="section-title">Step 2 — Upload File Excel </div>
     <form action="{{ route('admin.property.import') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
