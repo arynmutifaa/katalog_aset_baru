@@ -1,314 +1,333 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile - Telkom Property</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        body{
-            background:#f4f6fb;
-            color:#222;
+        body {
+            background: #f4f6fb;
+            color: #222;
         }
 
-        .navbar{
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            z-index:1000;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:14px 60px;
-            background: rgba(44,47,56,0.88);
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 60px;
+            background: rgba(44, 47, 56, 0.88);
             backdrop-filter: blur(10px);
-            border-bottom:1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .nav-left{
-            display:flex;
-            align-items:center;
-            gap:12px;
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .nav-logo{
-            height:42px;
+        .nav-logo {
+            height: 42px;
         }
 
-        .logo-text{
-            color:white;
-            font-size:18px;
-            font-weight:600;
+        .logo-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
         }
 
-        .nav-btn{
-            display:inline-block;
-            padding:10px 22px;
-            border-radius:30px;
-            background:#E30613;
-            color:white;
-            text-decoration:none;
-            font-size:14px;
-            font-weight:600;
-            transition:0.3s;
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: #E30613;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        .nav-btn:hover{
-            transform:translateY(-2px);
-            box-shadow:0 8px 20px rgba(227,6,19,0.35);
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(227, 6, 19, 0.35);
         }
 
-        .company-page{
-            min-height:100vh;
-            padding:120px 60px 60px;
+        .company-page {
+            min-height: 100vh;
+            padding: 120px 60px 60px;
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(19,23,34,0.90) 0%,
-                    rgba(22,26,38,0.88) 45%,
-                    rgba(123,10,19,0.82) 100%
-                ),
+                linear-gradient(135deg,
+                    rgba(19, 23, 34, 0.90) 0%,
+                    rgba(22, 26, 38, 0.88) 45%,
+                    rgba(123, 10, 19, 0.82) 100%),
                 url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
         }
 
-        .company-wrapper{
-            max-width:1250px;
-            margin:0 auto;
-            display:grid;
+        .company-wrapper {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
             grid-template-columns: 0.95fr 1.35fr;
-            gap:28px;
-            align-items:stretch;
+            gap: 28px;
+            align-items: stretch;
+            height: calc(100vh - 150px);
+            /* tambah ini */
         }
 
-        .company-left{
-            background: rgba(255,255,255,0.10);
-            border:1px solid rgba(255,255,255,0.12);
-            border-radius:28px;
-            padding:40px 35px;
-            color:white;
-            box-shadow:0 18px 40px rgba(0,0,0,0.18);
+        .company-left {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 28px;
+            padding: 40px 35px;
+            color: white;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
             backdrop-filter: blur(10px);
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* hapus position sticky, tidak perlu lagi */
         }
 
-        .company-badge{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            width:fit-content;
-            padding:10px 16px;
-            border-radius:999px;
-            background:rgba(255,255,255,0.14);
-            color:white;
-            font-size:13px;
-            font-weight:600;
-            margin-bottom:22px;
+        .company-right {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+            overflow-y: auto;
+            scrollbar-width: thin;
         }
 
-        .company-left h1{
-            font-size:54px;
-            line-height:1.1;
-            font-weight:800;
-            margin-bottom:20px;
+        .company-page {
+            height: 100vh;
+            padding: 120px 60px 60px;
+            background: ...;
+            overflow: hidden;
         }
 
-        .mini-line{
-            width:80px;
-            height:5px;
-            border-radius:10px;
-            background:#E30613;
-            margin:20px 0 24px;
+        .company-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 22px;
         }
 
-        .company-left p{
-            font-size:15px;
-            line-height:1.8;
-            color:rgba(255,255,255,0.86);
+        .company-left h1 {
+            font-size: 54px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .company-right{
-            background: rgba(255,255,255,0.96);
-            border-radius:28px;
-            padding:30px;
-            box-shadow:0 18px 40px rgba(0,0,0,0.18);
+        .mini-line {
+            width: 80px;
+            height: 5px;
+            border-radius: 10px;
+            background: #E30613;
+            margin: 20px 0 24px;
         }
 
-        .header-box{
-            display:flex;
-            align-items:flex-start;
-            gap:16px;
-            padding-bottom:22px;
-            border-bottom:1px solid #ececec;
-            margin-bottom:24px;
+        .company-left p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.86);
         }
 
-        .header-number{
-            min-width:60px;
-            height:60px;
-            border-radius:18px;
-            background:#E30613;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:20px;
-            font-weight:700;
-            box-shadow:0 8px 18px rgba(227,6,19,0.22);
+        .company-right {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
         }
 
-        .header-text h2{
-            font-size:30px;
-            color:#2c2f38;
-            margin-bottom:8px;
-            font-weight:800;
+        .header-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #ececec;
+            margin-bottom: 24px;
         }
 
-        .header-text p{
-            font-size:15px;
-            color:#666;
-            line-height:1.8;
+        .header-number {
+            min-width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            background: #E30613;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(227, 6, 19, 0.22);
         }
 
-        .content-grid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:18px;
+        .header-text h2 {
+            font-size: 30px;
+            color: #2c2f38;
+            margin-bottom: 8px;
+            font-weight: 800;
         }
 
-        .info-card{
-            background:#f8f9fc;
-            border:1px solid #eceef5;
-            border-radius:22px;
-            padding:22px;
+        .header-text p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
         }
 
-        .info-card h3{
-            font-size:22px;
-            color:#2c2f38;
-            margin-bottom:12px;
-            font-weight:700;
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .info-card {
+            background: #f8f9fc;
+            border: 1px solid #eceef5;
+            border-radius: 22px;
+            padding: 22px;
+        }
+
+        .info-card h3 {
+            font-size: 22px;
+            color: #2c2f38;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .info-card p,
-        .info-card li{
-            font-size:15px;
-            color:#666;
-            line-height:1.9;
+        .info-card li {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.9;
         }
 
-        .info-card ul{
-            padding-left:20px;
+        .info-card ul {
+            padding-left: 20px;
         }
 
-        .full-width{
-            grid-column:1 / -1;
+        .full-width {
+            grid-column: 1 / -1;
         }
 
         /* ===== COMMISSIONERS & BOARD SECTION ===== */
-        .leadership-wrapper{
-            margin-top:34px;
-            display:flex;
-            flex-direction:column;
-            gap:32px;
+        .leadership-wrapper {
+            margin-top: 34px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
 
-        .org-panel{
-            position:relative;
-            background:#d9d7d7;
-            border-radius:18px;
-            padding:52px 24px 26px;
-            box-shadow:0 12px 26px rgba(0,0,0,0.06);
+        .org-panel {
+            position: relative;
+            background: #d9d7d7;
+            border-radius: 18px;
+            padding: 52px 24px 26px;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
         }
 
-        .org-title{
-            position:absolute;
-            top:-22px;
-            left:18px;
-            width:250px;
-            background:#d91f11;
-            color:#fff;
-            padding:10px 20px;
-            border-radius:8px;
-            font-size:18px;
-            font-weight:700;
-            text-align:center;
-            box-shadow:0 8px 18px rgba(217,31,17,0.24);
+        .org-title {
+            position: absolute;
+            top: -22px;
+            left: 18px;
+            width: 250px;
+            background: #d91f11;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(217, 31, 17, 0.24);
         }
 
-        .org-top{
-            display:flex;
-            justify-content:center;
-            margin-bottom:20px;
+        .org-top {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .org-row{
-            display:grid;
-            gap:22px;
-            align-items:start;
+        .org-row {
+            display: grid;
+            gap: 22px;
+            align-items: start;
         }
 
-        .org-row.four{
-            grid-template-columns:repeat(4, 1fr);
+        .org-row.four {
+            grid-template-columns: repeat(4, 1fr);
         }
 
-        .org-row.three{
-            grid-template-columns:repeat(3, 1fr);
-            max-width:640px;
-            margin:0 auto;
+        .org-row.three {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        .person-card{
-            text-align:center;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
+        .person-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .person-photo{
-            width:86px;
-            height:86px;
-            border-radius:50%;
-            overflow:hidden;
-            background:#f0f0f0;
-            margin-bottom:10px;
-            box-shadow:0 6px 16px rgba(0,0,0,0.10);
+        .person-photo {
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f0f0f0;
+            margin-bottom: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
         }
 
-        .person-photo img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
+        .person-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .person-name{
-            font-size:13px;
-            font-weight:600;
-            color:#222;
-            line-height:1.25;
-            min-height:34px;
-            display:flex;
-            align-items:flex-end;
-            justify-content:center;
+        .person-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #222;
+            line-height: 1.25;
+            min-height: 34px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .person-role{
-            margin-top:3px;
-            font-size:13px;
-            font-weight:700;
-            color:#c51d2a;
-            line-height:1.35;
+        .person-role {
+            margin-top: 3px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #c51d2a;
+            line-height: 1.35;
         }
 
         /* ===== CONTACT PERSON SECTION ===== */
@@ -326,7 +345,7 @@
             background: white;
             border-radius: 14px;
             padding: 16px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
         .contact-icon {
@@ -337,12 +356,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 14px rgba(37,211,102,0.28);
+            box-shadow: 0 6px 14px rgba(37, 211, 102, 0.28);
         }
 
         .email-icon {
             background: #E30613;
-            box-shadow: 0 6px 14px rgba(227,6,19,0.28);
+            box-shadow: 0 6px 14px rgba(227, 6, 19, 0.28);
         }
 
         .contact-label {
@@ -364,88 +383,90 @@
             color: #E30613;
         }
 
-        @media(max-width:1100px){
-            .company-wrapper{
-                grid-template-columns:1fr;
+        @media(max-width:1100px) {
+            .company-wrapper {
+                grid-template-columns: 1fr;
             }
 
-            .company-left h1{
-                font-size:42px;
+            .company-left h1 {
+                font-size: 42px;
             }
 
-            .org-row.four{
-                grid-template-columns:repeat(2, 1fr);
+            .org-row.four {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .org-row.three{
-                grid-template-columns:repeat(2, 1fr);
-                max-width:100%;
+            .org-row.three {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
             }
         }
 
-        @media(max-width:768px){
-            .navbar{
-                padding:12px 20px;
-                flex-direction:column;
-                align-items:flex-start;
-                gap:12px;
+        @media(max-width:768px) {
+            .navbar {
+                padding: 12px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
             }
 
-            .company-page{
-                padding:120px 20px 40px;
+            .company-page {
+                padding: 120px 20px 40px;
             }
 
             .company-left,
-            .company-right{
-                padding:22px;
+            .company-right {
+                padding: 22px;
             }
 
-            .company-left h1{
-                font-size:34px;
+            .company-left h1 {
+                font-size: 34px;
             }
 
-            .content-grid{
-                grid-template-columns:1fr;
+            .content-grid {
+                grid-template-columns: 1fr;
             }
 
-            .header-box{
-                flex-direction:column;
+            .header-box {
+                flex-direction: column;
             }
 
-            .org-panel{
-                padding:48px 16px 22px;
+            .org-panel {
+                padding: 48px 16px 22px;
             }
 
-            .org-title{
-                width:210px;
-                font-size:16px;
-                padding:9px 16px;
+            .org-title {
+                width: 210px;
+                font-size: 16px;
+                padding: 9px 16px;
             }
 
-            .person-photo{
-                width:78px;
-                height:78px;
+            .person-photo {
+                width: 78px;
+                height: 78px;
             }
 
             .person-name,
-            .person-role{
-                font-size:12px;
+            .person-role {
+                font-size: 12px;
             }
         }
 
-        @media(max-width:560px){
+        @media(max-width:560px) {
+
             .org-row.four,
-            .org-row.three{
-                grid-template-columns:1fr;
+            .org-row.three {
+                grid-template-columns: 1fr;
             }
 
-            .org-title{
-                left:50%;
-                transform:translateX(-50%);
+            .org-title {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="navbar">
@@ -545,7 +566,8 @@
                         <div class="org-row four">
                             <div class="person-card">
                                 <div class="person-photo">
-                                    <img src="{{ asset('images/leadership/amalia-adininggar.jpg') }}" alt="Amalia Adininggar Widyasanti">
+                                    <img src="{{ asset('images/leadership/amalia-adininggar.jpg') }}"
+                                        alt="Amalia Adininggar Widyasanti">
                                 </div>
                                 <div class="person-name">Amalia Adininggar Widyasanti</div>
                                 <div class="person-role">Komisaris</div>
@@ -553,7 +575,8 @@
 
                             <div class="person-card">
                                 <div class="person-photo">
-                                    <img src="{{ asset('images/leadership/r-muharam.jpg') }}" alt="R. Muharam Perbawamukti">
+                                    <img src="{{ asset('images/leadership/r-muharam.jpg') }}"
+                                        alt="R. Muharam Perbawamukti">
                                 </div>
                                 <div class="person-name">R. Muharam Perbawamukti</div>
                                 <div class="person-role">Komisaris</div>
@@ -569,7 +592,8 @@
 
                             <div class="person-card">
                                 <div class="person-photo">
-                                    <img src="{{ asset('images/leadership/verry-surya.jpg') }}" alt="Verry Surya Hendrawan">
+                                    <img src="{{ asset('images/leadership/verry-surya.jpg') }}"
+                                        alt="Verry Surya Hendrawan">
                                 </div>
                                 <div class="person-name">Verry Surya Hendrawan</div>
                                 <div class="person-role">Komisaris</div>
@@ -585,7 +609,8 @@
                         <div class="org-top">
                             <div class="person-card">
                                 <div class="person-photo">
-                                    <img src="{{ asset('images/leadership/mohammad-firdaus.jpg') }}" alt="Mohammad Firdaus">
+                                    <img src="{{ asset('images/leadership/mohammad-firdaus.jpg') }}"
+                                        alt="Mohammad Firdaus">
                                 </div>
                                 <div class="person-name">Mohammad Firdaus</div>
                                 <div class="person-role">President Director</div>
@@ -611,7 +636,8 @@
 
                             <div class="person-card">
                                 <div class="person-photo">
-                                    <img src="{{ asset('images/leadership/amin-kusumawati.jpg') }}" alt="Amin Kusumawati">
+                                    <img src="{{ asset('images/leadership/amin-kusumawati.jpg') }}"
+                                        alt="Amin Kusumawati">
                                 </div>
                                 <div class="person-name">Amin Kusumawati</div>
                                 <div class="person-role">Business Director</div>
@@ -627,26 +653,33 @@
                         <div class="contact-grid">
                             <div class="contact-item">
                                 <div class="contact-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.513 5.838L.057 23.428a.75.75 0 0 0 .916.916l5.59-1.456A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.699-.504-5.25-1.385l-.372-.214-3.865 1.007 1.008-3.773-.228-.381A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        fill="white" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                        <path
+                                            d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.513 5.838L.057 23.428a.75.75 0 0 0 .916.916l5.59-1.456A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.699-.504-5.25-1.385l-.372-.214-3.865 1.007 1.008-3.773-.228-.381A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
                                     </svg>
                                 </div>
                                 <div class="contact-detail">
                                     <div class="contact-label">WhatsApp</div>
-                                    <a href="https://wa.me/6281332279010" class="contact-value" target="_blank">+62 812-3456-7890</a>
+                                    <a href="https://wa.me/6281332279010" class="contact-value" target="_blank">+62
+                                        812-3456-7890</a>
                                 </div>
                             </div>
 
                             <div class="contact-item">
                                 <div class="contact-icon email-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
-                                        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        fill="white" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
                                     </svg>
                                 </div>
                                 <div class="contact-detail">
                                     <div class="contact-label">Email</div>
-                                    <a href="mailto:ana@telkomproperty.co.id" class="contact-value">ana@telkomproperty.co.id</a>
+                                    <a href="mailto:ana@telkomproperty.co.id"
+                                        class="contact-value">ana@telkomproperty.co.id</a>
                                 </div>
                             </div>
                         </div>
@@ -659,4 +692,5 @@
     </section>
 
 </body>
+
 </html>

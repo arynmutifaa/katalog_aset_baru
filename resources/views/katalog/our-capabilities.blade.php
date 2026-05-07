@@ -68,47 +68,44 @@
             box-shadow:0 8px 20px rgba(227,6,19,0.35);
         }
 
-        .company-page{
-            min-height:100vh;
-            padding:120px 60px 60px;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(19,23,34,0.90) 0%,
-                    rgba(22,26,38,0.88) 45%,
-                    rgba(123,10,19,0.82) 100%
-                ),
-                url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
-            background-attachment:fixed;
-        }
+      .company-page{
+    height:100vh;
+    padding:120px 60px 60px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(19,23,34,0.90) 0%,
+            rgba(22,26,38,0.88) 45%,
+            rgba(123,10,19,0.82) 100%
+        ),
+        url("{{ asset('images/gambar1.jpeg') }}") center center / cover no-repeat;
+    background-attachment:fixed;
+    overflow:hidden;
+}
 
-        .main-layout{
-            max-width:1250px;
-            margin:0 auto;
-            display:grid;
-            grid-template-columns:0.85fr 1.55fr;
-            grid-template-areas:
-                "left top"
-                "left bottom";
-            column-gap:28px;
-            row-gap:0;
-            align-items:stretch;
-        }
+     .main-layout{
+    max-width:1250px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:0.85fr 1.55fr;
+    gap:28px;
+    align-items:start;
+    height: calc(100vh - 150px);
+}
 
-        .left-panel{
-            grid-area:left;
-            background:rgba(255,255,255,0.10);
-            border:1px solid rgba(255,255,255,0.12);
-            border-radius:28px;
-            color:#fff;
-            box-shadow:0 18px 40px rgba(0,0,0,0.18);
-            backdrop-filter:blur(10px);
-            padding:48px 38px;
-            min-height:100%;
-            display:flex;
-            flex-direction:column;
-            justify-content:flex-start;
-        }
+       .left-panel{
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:28px;
+    color:#fff;
+    box-shadow:0 18px 40px rgba(0,0,0,0.18);
+    backdrop-filter:blur(10px);
+    padding:48px 38px;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
 
         .panel-badge{
             display:inline-flex;
@@ -147,7 +144,6 @@
         }
 
         .top-section{
-            grid-area:top;
             background:rgba(255,255,255,0.97);
             border-radius:28px 28px 0 0;
             padding:30px 30px 22px;
@@ -319,9 +315,19 @@
             justify-content:center;
             font-size:15px;
         }
+.right-scroll{
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: 28px;
+}
 
+.right-scroll::-webkit-scrollbar{
+    display: none;
+}
         .bottom-section{
-            grid-area:bottom;
             background:rgba(255,255,255,0.98);
             border-radius:0 0 28px 28px;
             padding:26px 34px 38px;
@@ -475,6 +481,18 @@
                 font-size:24px;
             }
         }
+        .company-right{
+    background: rgba(255,255,255,0.96);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.18);
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.company-right::-webkit-scrollbar{
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -497,6 +515,7 @@
                 <div class="mini-line"></div>
 
             </div>
+            <div class="right-scroll">
 
             <div class="top-section">
                 <div class="header-box">
@@ -667,6 +686,8 @@
                     </div>
                 </div>
             </div>
+            </div>
+    </div>
 
         </div>
     </section>
