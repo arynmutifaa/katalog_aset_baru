@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\LoginController;
@@ -54,7 +53,6 @@ Route::middleware(['auth'])
     ->name('admin.')
     ->group(function () {
 
-
         Route::get('/dashboard', [AdminController::class, 'dashboard'])
             ->name('dashboard');
 
@@ -63,6 +61,13 @@ Route::middleware(['auth'])
 
         Route::get('/property/create', [AdminPropertyController::class, 'create'])
             ->name('property.create');
+
+        Route::get('/property/import', [AdminPropertyController::class, 'importForm'])
+            ->name('property.import.form');
+        Route::post('/property/import', [AdminPropertyController::class, 'import'])
+            ->name('property.import');
+        Route::get('/property/template', [AdminPropertyController::class, 'downloadTemplate'])
+            ->name('property.template');
 
         Route::post('/property', [AdminPropertyController::class, 'store'])
             ->name('property.store');

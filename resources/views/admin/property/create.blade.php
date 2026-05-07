@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -11,8 +10,9 @@
 
 <div class="container mt-5">
     <div class="card shadow">
-        <div class="card-header bg-danger text-white">
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
             <h4 class="mb-0">Tambah Property</h4>
+            <a href="{{ route('admin.property.import.form') }}" class="btn btn-dark btn-sm">📥 Import Excel</a>
         </div>
 
         <div class="card-body">
@@ -146,4 +146,3 @@
 
 </body>
 </html>
-```

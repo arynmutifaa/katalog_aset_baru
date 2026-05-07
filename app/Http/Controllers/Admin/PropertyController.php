@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PropertyDetail;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PropertyImport;
 
 class PropertyController extends Controller
 {
@@ -34,7 +35,6 @@ class PropertyController extends Controller
         ]);
 
         $property = new PropertyDetail();
-
         $property->area_id = $request->area_id;
         $property->nama_gedung = $request->nama_gedung;
         $property->alamat = $request->alamat;
@@ -69,6 +69,7 @@ class PropertyController extends Controller
         return redirect()->route('admin.property.index')
             ->with('success', 'Property berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $property = PropertyDetail::findOrFail($id);
@@ -124,5 +125,36 @@ class PropertyController extends Controller
     {
         PropertyDetail::destroy($id);
         return redirect()->route('admin.property.index');
+    }
+
+    public function importForm()
+    {
+        return view('admin.property.import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate(['file' => 'required|mimes:xlsx,xls,csv']);
+        Excel::import(new PropertyImport, $request->file('file'));
+        return redirect()->route('admin.dashboard')->with('success', 'Data berhasil diimport!');
+    }
+
+    public function downloadTemplate()
+    {
+        $headers = ['nama_gedung','alamat','luas_tanah','luas_gedung','status_tanah',
+            'penggunaan_saat_ini','peruntukan','batas_lahan','properti_sekitar','lebar_jalan',
+            'bentuk_lahan','lebar_lahan','kedalaman_lahan','potensi_pengembangan',
+            'jarak_pusat_kota','kondisi_lahan','titik_koordinat','space_idle_gedung','fasilitas'];
+
+        $callback = function() use ($headers) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="template_property.csv"',
+        ]);
     }
 }

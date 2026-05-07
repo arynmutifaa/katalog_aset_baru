@@ -268,30 +268,17 @@
 
             <select name="daerah">
                 <option value="">Semua Daerah</option>
-                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>
-                    Pasuruan
+                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>Pasuruan</option>
+                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>Jember</option>
+                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>Banyuwangi</option>
+                <option value="situbondo_bondowoso" {{ request('daerah') == 'situbondo_bondowoso' ? 'selected' : '' }}>
+                    Situbondo & Bondowoso</option>
+                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>Lumajang</option>
+                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>Probolinggo
                 </option>
-                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>
-                    Jember
-                </option>
-                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>
-                    Banyuwangi
-                </option>
-                <option value="situbondo" {{ request('daerah') == 'situbondo' ? 'selected' : '' }}>
-                    Situbondo & Bondowoso
-                </option>
-                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>
-                    Lumajang
-                </option>
-                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>
-                    Probolinggo
-                </option>
-                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>
-                    Sidoarjo
-                </option>
-                <option value="jombang" {{ request('daerah') == 'jombang' ? 'selected' : '' }}>
-                    Jombang & Mojokerto
-                </option>
+                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>Sidoarjo</option>
+                <option value="jombang_mojokerto" {{ request('daerah') == 'jombang_mojokerto' ? 'selected' : '' }}>
+                    Jombang & Mojokerto</option>
             </select>
             <button type="submit">Cari</button>
         </form>
@@ -320,26 +307,28 @@
 
             <div class="card">
                 <h4>Total Property</h4>
-                <h2>{{ $properties->count() }}</h2>
+                <h2>{{ $properties->filter(fn($p) => $p->nama_gedung || $p->alamat)->count() }}</h2>
             </div>
         </div>
 
         <div class="property-grid">
             @foreach ($properties as $property)
-                <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
-                    <div class="property-card">
-                        @php $images = json_decode($property->gambar); @endphp
+                @if ($property->nama_gedung || $property->alamat)
+                    <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+                        <div class="property-card">
+                            @php $images = json_decode($property->gambar); @endphp
 
-                        @if ($images && count($images) > 0)
-                            <img src="{{ asset('storage/' . $images[0]) }}">
-                        @endif
+                            @if ($images && count($images) > 0)
+                                <img src="{{ asset('storage/' . $images[0]) }}">
+                            @endif
 
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p>{{ $property->alamat }}</p>
+                            <div class="info">
+                                <h4>{{ $property->nama_gedung }}</h4>
+                                <p>{{ $property->alamat }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @endif
             @endforeach
         </div>
     </div>
