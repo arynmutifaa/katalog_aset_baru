@@ -485,16 +485,13 @@
         }
 
         .preview-overlay img {
-            max-width: 85vw;
-            max-height: 85vh;
-            min-width: 500px;
-            min-height: 500px;
-            width: 70vw;
-            height: 70vh;
-            object-fit: contain;
-            border-radius: 14px;
-            background: #fff;
-        }
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+}
 
         .preview-close {
             position: absolute;
@@ -618,13 +615,14 @@
         }
 
         .photo-grid-2col img {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.25s;
-        }
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+}
 
         .photo-grid-2col img:hover {
             transform: scale(1.03);
@@ -674,11 +672,11 @@
 
         .pd-big {
             grid-column: 1 / 3;
-            aspect-ratio: 2 / 1;
+            aspect-ratio: 5 / 4;
         }
 
         .pd-wide {
-            aspect-ratio: 4 / 1;
+            aspect-ratio: 5 / 4;
         }
 
         .pd-grid img:hover {
