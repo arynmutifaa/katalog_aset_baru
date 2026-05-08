@@ -144,5 +144,38 @@
     </div>
 </div>
 
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    const input = document.querySelector('input[name="gambar[]"]');
+    const MAX_SIZE = 2 * 1024 * 1024;
+    const ALLOWED = ['image/jpeg', 'image/png', 'image/webp'];
+    const errors = [];
+
+    Array.from(input.files).forEach(file => {
+        if (!ALLOWED.includes(file.type)) {
+            errors.push(`<b>${file.name}</b>: format tidak didukung (harus JPG/PNG/WEBP)`);
+        } else if (file.size > MAX_SIZE) {
+            const mb = (file.size / 1024 / 1024).toFixed(1);
+            errors.push(`<b>${file.name}</b>: ukuran ${mb} MB (maks. 2 MB)`);
+        }
+    });
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        document.getElementById('upload-error')?.remove();
+
+        const div = document.createElement('div');
+        div.id = 'upload-error';
+        div.className = 'alert alert-danger mt-2';
+        div.innerHTML = '⚠️ Foto tidak bisa diupload:<br>' + errors.join('<br>');
+
+        input.closest('.col-md-12').appendChild(div);
+        div.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
+</script>
+
+</body>  <!-- ← ini sudah ada di file kamu -->
+</html>
 </body>
 </html>

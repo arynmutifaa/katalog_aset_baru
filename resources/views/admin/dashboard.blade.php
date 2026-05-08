@@ -176,6 +176,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 35px;
+            align-items: stretch;
         }
 
         .property-card {
@@ -186,6 +187,7 @@
             transition: 0.4s;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .property-card:hover {
@@ -338,7 +340,8 @@
             @foreach ($properties as $property)
                 @if ($property->nama_gedung || $property->alamat)
                     <a href="{{ route('admin.property.show', $property->id) }}"
-                        style="text-decoration:none;color:inherit;">
+                        style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
+                       
 
                         <div class="property-card">
 
