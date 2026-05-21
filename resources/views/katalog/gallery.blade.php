@@ -485,13 +485,13 @@
         }
 
         .preview-overlay img {
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 14px;
-}
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 14px;
+        }
 
         .preview-close {
             position: absolute;
@@ -615,14 +615,14 @@
         }
 
         .photo-grid-2col img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 5 / 4;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.25s;
-}
+            width: 100%;
+            height: auto;
+            aspect-ratio: 5 / 4;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
 
         .photo-grid-2col img:hover {
             transform: scale(1.03);

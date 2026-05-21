@@ -341,7 +341,7 @@
                 @if ($property->nama_gedung || $property->alamat)
                     <a href="{{ route('admin.property.show', $property->id) }}"
                         style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
-                       
+
 
                         <div class="property-card">
 

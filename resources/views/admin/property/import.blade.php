@@ -289,7 +289,6 @@
         <b>nama_gedung, alamat, luas_tanah, luas_gedung, status_tanah, penggunaan_saat_ini, peruntukan, batas_lahan, properti_sekitar, lebar_jalan, bentuk_lahan, lebar_lahan, kedalaman_lahan, potensi_pengembangan, jarak_pusat_kota, kondisi_lahan, titik_koordinat, space_idle_gedung, fasilitas</b>
     </div>
 
-    <!-- DOWNLOAD TEMPLATE -->
     <div class="template-box">
         <div class="template-text">Step 1 — Template Excel</div>
         <a href="{{ route('admin.property.template') }}" class="btn-download">Download Template</a>
@@ -297,7 +296,6 @@
 
     <hr class="divider">
 
-    <!-- UPLOAD & IMPORT -->
     <div class="upload-box">
         <div class="section-title">Step 2 — Upload File Excel</div>
         <form action="{{ route('admin.property.import') }}" method="POST" enctype="multipart/form-data">

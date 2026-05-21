@@ -386,24 +386,25 @@
             justify-content: space-between;
         }
 
-       .labor-item h3 {
-    font-size: 12px;
-    line-height: 1.3;
-    color: #06384a;
-    font-weight: 700;
-    text-align: center;
-    white-space: normal;
-}
-.labor-data {
-    background: #f1f3ff;
-    padding: 16px 14px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    text-align: center;
-    border-radius: 14px;
-    align-items: end;
-}
+        .labor-item h3 {
+            font-size: 12px;
+            line-height: 1.3;
+            color: #06384a;
+            font-weight: 700;
+            text-align: center;
+            white-space: normal;
+        }
+
+        .labor-data {
+            background: #f1f3ff;
+            padding: 16px 14px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+            border-radius: 14px;
+            align-items: end;
+        }
 
         .labor-item p {
             font-size: 20px;
@@ -698,22 +699,50 @@
                     </div>
 
                     <div class="labor-data">
-    <div class="labor-item"><h3>Staff</h3></div>
-    <div class="labor-item"><h3>House<br>keeping</h3></div>
-    <div class="labor-item"><h3>Engineer</h3></div>
-    <div class="labor-item"><h3>Security</h3></div>
-    <div class="labor-item"><h3>Driver</h3></div>
-    <div class="labor-item"><h3>Lokasi</h3></div>
-    <div class="labor-item"><h3>Gedung</h3></div>
+                        <div class="labor-item">
+                            <h3>Staff</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>House<br>keeping</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>Engineer</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>Security</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>Driver</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>Lokasi</h3>
+                        </div>
+                        <div class="labor-item">
+                            <h3>Gedung</h3>
+                        </div>
 
-    <div class="labor-item"><p>288</p></div>
-    <div class="labor-item"><p>3.981</p></div>
-    <div class="labor-item"><p>608</p></div>
-    <div class="labor-item"><p>7.982</p></div>
-    <div class="labor-item"><p>34</p></div>
-    <div class="labor-item"><p>2.848</p></div>
-    <div class="labor-item"><p>1.890</p></div>
-</div>
+                        <div class="labor-item">
+                            <p>288</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>3.981</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>608</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>7.982</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>34</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>2.848</p>
+                        </div>
+                        <div class="labor-item">
+                            <p>1.890</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

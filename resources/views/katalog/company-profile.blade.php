@@ -644,9 +644,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- END BOARD OF DIRECTOR -->
-
-                    <!-- CONTACT PERSON -->
                     <div class="org-panel">
                         <div class="org-title">Contact Person</div>
 
