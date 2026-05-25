@@ -163,7 +163,11 @@ class PropertyController extends Controller
     $property = PropertyDetail::findOrFail($id);
 
     $pdf = Pdf::loadView('admin.property.export-pdf', compact('property'))
-        ->setPaper('a4', 'portrait');
+        ->setPaper('a4', 'portrait')
+        ->setOption([
+            'isRemoteEnabled' => true,
+            'isHtml5ParserEnabled' => true,
+        ]);
 
     $filename = 'aset-' . str($property->nama_gedung)->slug() . '.pdf';
 

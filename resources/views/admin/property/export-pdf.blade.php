@@ -7,48 +7,24 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'DejaVu Sans', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             color: #222;
-            padding: 20px 25px;
+            padding: 15px 20px;
         }
-
         .header {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             border-bottom: 3px solid #E30613;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
-        .header h1 { font-size: 16px; color: #E30613; }
-        .header p { font-size: 10px; color: #777; margin-top: 3px; }
-
-        h2 { font-size: 13px; color: #E30613; margin-bottom: 2px; margin-top: 12px; }
-        .subtitle { font-size: 10px; color: #777; margin-bottom: 10px; }
-
-        .images { margin-bottom: 12px; }
-
-        /* Foto proporsional — tidak stretch */
-        .img-full {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-height: 200px;
-            border-radius: 6px;
-            margin-bottom: 6px;
-        }
-        .image-grid { width: 100%; border-collapse: collapse; }
-        .image-grid td { width: 50%; padding: 3px; vertical-align: top; }
-        .image-grid img {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-height: 120px;
-            border-radius: 5px;
-        }
-
-        table.info { width: 100%; border-collapse: collapse; margin-top: 8px; }
-        table.info td { border: 1px solid #ddd; padding: 6px 10px; }
+        .header h1 { font-size: 14px; color: #E30613; }
+        .header p { font-size: 9px; color: #777; margin-top: 2px; }
+        h2 { font-size: 12px; color: #E30613; margin-bottom: 2px; margin-top: 8px; }
+        .subtitle { font-size: 9px; color: #777; margin-bottom: 8px; }
+        .images { margin-bottom: 8px; }
+        table.info { width: 100%; border-collapse: collapse; margin-top: 6px; }
+        table.info td { border: 1px solid #ddd; padding: 4px 8px; }
         table.info td:first-child { font-weight: bold; background: #f8f8f8; width: 40%; }
-
-        .footer { margin-top: 12px; font-size: 9px; color: #aaa; text-align: right; }
+        .footer { margin-top: 8px; font-size: 8px; color: #aaa; text-align: right; }
     </style>
 </head>
 <body>
@@ -73,23 +49,32 @@
 
     @if (count($images) > 0)
         <div class="images">
-            {{-- Foto pertama full width, proporsional --}}
-            <img class="img-full" src="{{ public_path('storage/' . $images[0]) }}">
-
-            {{-- Foto sisanya grid 2 kolom --}}
-            @if (count($images) > 1)
-                @php $rest = array_slice($images, 1); @endphp
-                <table class="image-grid">
-                    @foreach (array_chunk($rest, 2) as $pair)
-                        <tr>
-                            @foreach ($pair as $img)
-                                <td><img src="{{ public_path('storage/' . $img) }}"></td>
-                            @endforeach
-                            @if (count($pair) === 1)<td></td>@endif
-                        </tr>
-                    @endforeach
-                </table>
-            @endif
+            {{-- Semua foto grid 3 kolom, kotak persegi --}}
+            <table width="100%" style="border-collapse:collapse;">
+                @foreach (array_chunk($images, 3) as $row)
+                    <tr>
+                        @foreach ($row as $img)
+                            @php $imgPath = public_path('storage/' . $img); @endphp
+                            <td width="33%" style="padding: 2px;">
+                                <div style="
+                                    width: 100%;
+                                    height: 80px;
+                                    background-image: url('{{ $imgPath }}');
+                                    background-size: cover;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    border-radius: 3px;
+                                "></div>
+                            </td>
+                        @endforeach
+                        @for ($i = count($row); $i < 3; $i++)
+                            <td width="33%" style="padding: 2px;">
+                                <div style="width:100%; height:80px; background:#f0f0f0; border-radius:3px;"></div>
+                            </td>
+                        @endfor
+                    </tr>
+                @endforeach
+            </table>
         </div>
     @endif
 
@@ -104,7 +89,31 @@
         <tr><td>LEBAR JALAN</td><td>{{ $property->lebar_jalan ?? '-' }}</td></tr>
         <tr><td>POTENSI PENGEMBANGAN</td><td>{{ $property->potensi_pengembangan ?? '-' }}</td></tr>
         <tr><td>JARAK KE PUSAT KOTA</td><td>{{ $property->jarak_pusat_kota ?? '-' }}</td></tr>
-        <tr><td>TITIK KOORDINAT</td><td>{{ $property->titik_koordinat ?? '-' }}</td></tr>
+        <tr>
+            <td>TITIK KOORDINAT</td>
+            <td>
+                @if ($property->titik_koordinat)
+                    @php
+                        $mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' . $property->titik_koordinat;
+                        $qr = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->size(80)->generate($mapsUrl);
+                    @endphp
+                    <table style="border:none; width:auto; border-collapse:collapse;">
+                        <tr>
+                            <td style="border:none; padding:0; vertical-align:middle; text-align:center;">
+                                <img src="data:image/svg+xml;base64,{{ base64_encode($qr) }}" width="55" height="55">
+                                <br>
+                                <span style="font-size:7px; color:#E30613; font-weight:bold;">Scan untuk melihat lokasi</span>
+                            </td>
+                            <td style="border:none; padding:0 0 0 8px; vertical-align:middle; font-size:9px; color:#555;">
+                                {{ $property->titik_koordinat }}
+                            </td>
+                        </tr>
+                    </table>
+                @else
+                    -
+                @endif
+            </td>
+        </tr>
         <tr><td>SPACE IDLE GEDUNG</td><td>{{ $property->space_idle_gedung ?? '-' }}</td></tr>
         <tr><td>FASILITAS</td><td>{{ $property->fasilitas ?? '-' }}</td></tr>
     </table>

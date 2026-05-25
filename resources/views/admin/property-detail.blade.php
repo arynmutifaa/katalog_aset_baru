@@ -189,7 +189,7 @@
             <a href="{{ route('admin.dashboard') }}" class="btn back">Kembali</a>
             <a href="{{ route('admin.property.edit', $property->id) }}" class="btn edit">Edit</a>
 <a href="{{ route('admin.property.export.pdf', $property->id) }}" class="btn" style="background: #E30613; color: white;">
-        ⬇ Export Aset
+     Export Aset
     </a>
             <form action="{{ route('admin.property.destroy', $property->id) }}" method="POST"
                 onsubmit="return confirm('Yakin hapus data?')">
