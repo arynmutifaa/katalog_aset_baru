@@ -285,9 +285,9 @@
     @endif
 
     <div class="info">
-        Pastikan file Excel kamu memiliki header kolom di baris pertama:<br><br>
-        <b>nama_gedung, alamat, luas_tanah, luas_gedung, status_tanah, penggunaan_saat_ini, peruntukan, batas_lahan, properti_sekitar, lebar_jalan, bentuk_lahan, lebar_lahan, kedalaman_lahan, potensi_pengembangan, jarak_pusat_kota, kondisi_lahan, titik_koordinat, space_idle_gedung, fasilitas</b>
-    </div>
+    Pastikan file Excel kamu memiliki header kolom di baris pertama:<br><br>
+    <b>nama_gedung, area_id, alamat, luas_tanah, luas_gedung, status_tanah, penggunaan_saat_ini, properti_sekitar, lebar_jalan, potensi_pengembangan, jarak_pusat_kota, titik_koordinat, space_idle_gedung, fasilitas</b>
+</div>
 
     <div class="template-box">
         <div class="template-text">Step 1 — Template Excel</div>

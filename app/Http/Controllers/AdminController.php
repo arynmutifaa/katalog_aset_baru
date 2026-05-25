@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PropertyDetail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PropertyImport;
+use Maatwebsite\Excel\Concerns\FromArray;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
         if ($request->search) {
             $query->where(function ($q) use ($request) {
                 $q->where('nama_gedung', 'like', '%' . $request->search . '%')
-                    ->orWhere('alamat', 'like', '%' . $request->search . '%');
+                  ->orWhere('alamat', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -48,44 +49,50 @@ class AdminController extends Controller
 
     public function import(Request $request)
     {
-        $request->validate(['file' => 'required|mimes:xlsx,xls,csv']);
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv'
+        ]);
+
         Excel::import(new PropertyImport, $request->file('file'));
-        return redirect()->route('admin.dashboard')->with('success', 'Data berhasil diimport!');
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Data berhasil diimport!');
     }
 
     public function downloadTemplate()
     {
-        $headers = [
-            'nama_gedung',
-            'alamat',
-            'luas_tanah',
-            'luas_gedung',
-            'status_tanah',
-            'penggunaan_saat_ini',
-            'peruntukan',
-            'batas_lahan',
-            'properti_sekitar',
-            'lebar_jalan',
-            'bentuk_lahan',
-            'lebar_lahan',
-            'kedalaman_lahan',
-            'potensi_pengembangan',
-            'jarak_pusat_kota',
-            'kondisi_lahan',
-            'titik_koordinat',
-            'space_idle_gedung',
-            'fasilitas'
+        $data = [
+            [
+                'nama_gedung',
+                'area_id',
+                'alamat',
+                'luas_tanah',
+                'luas_gedung',
+                'status_tanah',
+                'penggunaan_saat_ini',
+                'properti_sekitar',
+                'lebar_jalan',
+                'potensi_pengembangan',
+                'jarak_pusat_kota',
+                'titik_koordinat',
+                'space_idle_gedung',
+                'fasilitas'
+            ]
         ];
 
-        $callback = function () use ($headers) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $headers);
-            fclose($file);
-        };
+        return Excel::download(new class($data) implements FromArray
+        {
+            protected $data;
 
-        return response()->stream($callback, 200, [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="template_property.csv"',
-        ]);
+            public function __construct(array $data)
+            {
+                $this->data = $data;
+            }
+
+            public function array(): array
+            {
+                return $this->data;
+            }
+        }, 'template_property.xlsx');
     }
 }

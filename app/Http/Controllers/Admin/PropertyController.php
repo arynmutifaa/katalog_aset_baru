@@ -42,16 +42,10 @@ class PropertyController extends Controller
         $property->luas_gedung = $request->luas_gedung;
         $property->status_tanah = $request->status_tanah;
         $property->penggunaan_saat_ini = $request->penggunaan_saat_ini;
-        $property->peruntukan = $request->peruntukan;
-        $property->batas_lahan = $request->batas_lahan;
         $property->properti_sekitar = $request->properti_sekitar;
         $property->lebar_jalan = $request->lebar_jalan;
-        $property->bentuk_lahan = $request->bentuk_lahan;
-        $property->lebar_lahan = $request->lebar_lahan;
-        $property->kedalaman_lahan = $request->kedalaman_lahan;
         $property->potensi_pengembangan = $request->potensi_pengembangan;
         $property->jarak_pusat_kota = $request->jarak_pusat_kota;
-        $property->kondisi_lahan = $request->kondisi_lahan;
         $property->titik_koordinat = $request->titik_koordinat;
         $property->space_idle_gedung = $request->space_idle_gedung;
         $property->fasilitas = $request->fasilitas;
@@ -93,16 +87,10 @@ class PropertyController extends Controller
         $property->luas_gedung = $request->luas_gedung;
         $property->status_tanah = $request->status_tanah;
         $property->penggunaan_saat_ini = $request->penggunaan_saat_ini;
-        $property->peruntukan = $request->peruntukan;
-        $property->batas_lahan = $request->batas_lahan;
         $property->properti_sekitar = $request->properti_sekitar;
         $property->lebar_jalan = $request->lebar_jalan;
-        $property->bentuk_lahan = $request->bentuk_lahan;
-        $property->lebar_lahan = $request->lebar_lahan;
-        $property->kedalaman_lahan = $request->kedalaman_lahan;
         $property->potensi_pengembangan = $request->potensi_pengembangan;
         $property->jarak_pusat_kota = $request->jarak_pusat_kota;
-        $property->kondisi_lahan = $request->kondisi_lahan;
         $property->titik_koordinat = $request->titik_koordinat;
         $property->space_idle_gedung = $request->space_idle_gedung;
         $property->fasilitas = $request->fasilitas;
@@ -141,10 +129,22 @@ class PropertyController extends Controller
 
     public function downloadTemplate()
     {
-        $headers = ['nama_gedung','alamat','luas_tanah','luas_gedung','status_tanah',
-            'penggunaan_saat_ini','peruntukan','batas_lahan','properti_sekitar','lebar_jalan',
-            'bentuk_lahan','lebar_lahan','kedalaman_lahan','potensi_pengembangan',
-            'jarak_pusat_kota','kondisi_lahan','titik_koordinat','space_idle_gedung','fasilitas'];
+        $headers = [
+    'nama_gedung',
+    'area_id',
+    'alamat',
+    'luas_tanah',
+    'luas_gedung',
+    'status_tanah',
+    'penggunaan_saat_ini',
+    'properti_sekitar',
+    'lebar_jalan',
+    'potensi_pengembangan',
+    'jarak_pusat_kota',
+    'titik_koordinat',
+    'space_idle_gedung',
+    'fasilitas'
+];
 
         $callback = function() use ($headers) {
             $file = fopen('php://output', 'w');

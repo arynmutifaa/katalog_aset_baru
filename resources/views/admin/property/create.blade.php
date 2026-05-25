@@ -63,16 +63,6 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label>Peruntukan</label>
-                            <input type="text" name="peruntukan" class="form-control">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label>Batas Lahan</label>
-                            <input type="text" name="batas_lahan" class="form-control">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
                             <label>Properti Sekitar</label>
                             <input type="text" name="properti_sekitar" class="form-control">
                         </div>
@@ -81,22 +71,6 @@
                             <label>Lebar Jalan</label>
                             <input type="text" name="lebar_jalan" class="form-control">
                         </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label>Bentuk Lahan</label>
-                            <input type="text" name="bentuk_lahan" class="form-control">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label>Lebar Lahan</label>
-                            <input type="text" name="lebar_lahan" class="form-control">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label>Kedalaman Lahan</label>
-                            <input type="text" name="kedalaman_lahan" class="form-control">
-                        </div>
-
                         <div class="col-md-6 mb-3">
                             <label>Potensi Pengembangan</label>
                             <input type="text" name="potensi_pengembangan" class="form-control">
@@ -107,10 +81,6 @@
                             <input type="text" name="jarak_pusat_kota" class="form-control">
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label>Kondisi Lahan</label>
-                            <input type="text" name="kondisi_lahan" class="form-control">
-                        </div>
 
                         <div class="col-md-6 mb-3">
                             <label>Titik Koordinat</label>

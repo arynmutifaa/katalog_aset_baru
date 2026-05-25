@@ -243,32 +243,12 @@
                 <td>{{ $property->penggunaan_saat_ini }}</td>
             </tr>
             <tr>
-                <td>PERUNTUKAN</td>
-                <td>{{ $property->peruntukan }}</td>
-            </tr>
-            <tr>
-                <td>BATAS LAHAN</td>
-                <td>{{ $property->batas_lahan }}</td>
-            </tr>
-            <tr>
                 <td>PROPERTI SEKITAR</td>
                 <td>{{ $property->properti_sekitar }}</td>
             </tr>
             <tr>
                 <td>LEBAR JALAN</td>
                 <td>{{ $property->lebar_jalan }}</td>
-            </tr>
-            <tr>
-                <td>BENTUK LAHAN</td>
-                <td>{{ $property->bentuk_lahan }}</td>
-            </tr>
-            <tr>
-                <td>LEBAR LAHAN</td>
-                <td>{{ $property->lebar_lahan }}</td>
-            </tr>
-            <tr>
-                <td>KEDALAMAN LAHAN</td>
-                <td>{{ $property->kedalaman_lahan }}</td>
             </tr>
             <tr>
                 <td>POTENSI PENGEMBANGAN</td>
@@ -278,9 +258,6 @@
                 <td>JARAK KE PUSAT KOTA</td>
                 <td>{{ $property->jarak_pusat_kota }}</td>
             </tr>
-            <tr>
-                <td>KONDISI LAHAN</td>
-                <td>{{ $property->kondisi_lahan }}</td>
             </tr>
             <tr>
                 <td>TITIK KOORDINAT</td>
