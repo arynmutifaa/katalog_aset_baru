@@ -174,6 +174,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 35px;
+            align-items: stretch;
         }
 
         .property-card {
@@ -182,6 +183,9 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
             transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .property-card:hover {
@@ -194,6 +198,7 @@
             height: 200px;
             object-fit: cover;
             transition: 0.4s;
+            flex-shrink: 0;
         }
 
         .property-card:hover img {
@@ -202,6 +207,11 @@
 
         .property-card .info {
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 90px;
         }
 
         .property-card h4 {
@@ -268,30 +278,17 @@
 
             <select name="daerah">
                 <option value="">Semua Daerah</option>
-                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>
-                    Pasuruan
+                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>Pasuruan</option>
+                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>Jember</option>
+                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>Banyuwangi</option>
+                <option value="situbondo_bondowoso" {{ request('daerah') == 'situbondo_bondowoso' ? 'selected' : '' }}>
+                    Situbondo & Bondowoso</option>
+                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>Lumajang</option>
+                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>Probolinggo
                 </option>
-                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>
-                    Jember
-                </option>
-                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>
-                    Banyuwangi
-                </option>
-                <option value="situbondo" {{ request('daerah') == 'situbondo' ? 'selected' : '' }}>
-                    Situbondo & Bondowoso
-                </option>
-                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>
-                    Lumajang
-                </option>
-                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>
-                    Probolinggo
-                </option>
-                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>
-                    Sidoarjo
-                </option>
-                <option value="jombang" {{ request('daerah') == 'jombang' ? 'selected' : '' }}>
-                    Jombang & Mojokerto
-                </option>
+                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>Sidoarjo</option>
+                <option value="jombang_mojokerto" {{ request('daerah') == 'jombang_mojokerto' ? 'selected' : '' }}>
+                    Jombang & Mojokerto</option>
             </select>
             <button type="submit">Cari</button>
         </form>
@@ -320,26 +317,33 @@
 
             <div class="card">
                 <h4>Total Property</h4>
-                <h2>{{ $properties->count() }}</h2>
+                <h2>{{ $properties->filter(fn($p) => $p->nama_gedung || $p->alamat)->count() }}</h2>
             </div>
         </div>
 
         <div class="property-grid">
             @foreach ($properties as $property)
-                <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
-                    <div class="property-card">
-                        @php $images = json_decode($property->gambar); @endphp
+                @if ($property->nama_gedung || $property->alamat)
+                    <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
+                        <div class="property-card">
+                            @php $images = json_decode($property->gambar); @endphp
 
-                        @if ($images && count($images) > 0)
-                            <img src="{{ asset('storage/' . $images[0]) }}">
-                        @endif
+                            @if ($images && count($images) > 0)
+                                <img src="{{ asset('storage/' . $images[0]) }}">
+                            @else
+                                <div
+                                    style="width:100%;height:200px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:14px;">
+                                    Tidak ada foto
+                                </div>
+                            @endif
 
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p>{{ $property->alamat }}</p>
+                            <div class="info">
+                                <h4>{{ $property->nama_gedung }}</h4>
+                                <p>{{ $property->alamat }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @endif
             @endforeach
         </div>
     </div>

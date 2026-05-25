@@ -85,16 +85,6 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Peruntukan</label>
-                        <input type="text" name="peruntukan" class="form-control" value="{{ $property->peruntukan }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label>Batas Lahan</label>
-                        <input type="text" name="batas_lahan" class="form-control" value="{{ $property->batas_lahan }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
                         <label>Properti Sekitar</label>
                         <input type="text" name="properti_sekitar" class="form-control" value="{{ $property->properti_sekitar }}">
                     </div>
@@ -105,21 +95,6 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Bentuk Lahan</label>
-                        <input type="text" name="bentuk_lahan" class="form-control" value="{{ $property->bentuk_lahan }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label>Lebar Lahan</label>
-                        <input type="text" name="lebar_lahan" class="form-control" value="{{ $property->lebar_lahan }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label>Kedalaman Lahan</label>
-                        <input type="text" name="kedalaman_lahan" class="form-control" value="{{ $property->kedalaman_lahan }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
                         <label>Potensi Pengembangan</label>
                         <input type="text" name="potensi_pengembangan" class="form-control" value="{{ $property->potensi_pengembangan }}">
                     </div>
@@ -127,11 +102,6 @@
                     <div class="col-md-6 mb-3">
                         <label>Jarak Pusat Kota</label>
                         <input type="text" name="jarak_pusat_kota" class="form-control" value="{{ $property->jarak_pusat_kota }}">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label>Kondisi Lahan</label>
-                        <input type="text" name="kondisi_lahan" class="form-control" value="{{ $property->kondisi_lahan }}">
                     </div>
 
                     <div class="col-md-6 mb-3">

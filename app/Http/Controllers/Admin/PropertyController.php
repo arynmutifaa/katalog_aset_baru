@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PropertyDetail;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PropertyImport;
 
 class PropertyController extends Controller
 {
@@ -34,7 +35,6 @@ class PropertyController extends Controller
         ]);
 
         $property = new PropertyDetail();
-
         $property->area_id = $request->area_id;
         $property->nama_gedung = $request->nama_gedung;
         $property->alamat = $request->alamat;
@@ -42,16 +42,10 @@ class PropertyController extends Controller
         $property->luas_gedung = $request->luas_gedung;
         $property->status_tanah = $request->status_tanah;
         $property->penggunaan_saat_ini = $request->penggunaan_saat_ini;
-        $property->peruntukan = $request->peruntukan;
-        $property->batas_lahan = $request->batas_lahan;
         $property->properti_sekitar = $request->properti_sekitar;
         $property->lebar_jalan = $request->lebar_jalan;
-        $property->bentuk_lahan = $request->bentuk_lahan;
-        $property->lebar_lahan = $request->lebar_lahan;
-        $property->kedalaman_lahan = $request->kedalaman_lahan;
         $property->potensi_pengembangan = $request->potensi_pengembangan;
         $property->jarak_pusat_kota = $request->jarak_pusat_kota;
-        $property->kondisi_lahan = $request->kondisi_lahan;
         $property->titik_koordinat = $request->titik_koordinat;
         $property->space_idle_gedung = $request->space_idle_gedung;
         $property->fasilitas = $request->fasilitas;
@@ -69,6 +63,7 @@ class PropertyController extends Controller
         return redirect()->route('admin.property.index')
             ->with('success', 'Property berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $property = PropertyDetail::findOrFail($id);
@@ -92,16 +87,10 @@ class PropertyController extends Controller
         $property->luas_gedung = $request->luas_gedung;
         $property->status_tanah = $request->status_tanah;
         $property->penggunaan_saat_ini = $request->penggunaan_saat_ini;
-        $property->peruntukan = $request->peruntukan;
-        $property->batas_lahan = $request->batas_lahan;
         $property->properti_sekitar = $request->properti_sekitar;
         $property->lebar_jalan = $request->lebar_jalan;
-        $property->bentuk_lahan = $request->bentuk_lahan;
-        $property->lebar_lahan = $request->lebar_lahan;
-        $property->kedalaman_lahan = $request->kedalaman_lahan;
         $property->potensi_pengembangan = $request->potensi_pengembangan;
         $property->jarak_pusat_kota = $request->jarak_pusat_kota;
-        $property->kondisi_lahan = $request->kondisi_lahan;
         $property->titik_koordinat = $request->titik_koordinat;
         $property->space_idle_gedung = $request->space_idle_gedung;
         $property->fasilitas = $request->fasilitas;
@@ -124,5 +113,48 @@ class PropertyController extends Controller
     {
         PropertyDetail::destroy($id);
         return redirect()->route('admin.property.index');
+    }
+
+    public function importForm()
+    {
+        return view('admin.property.import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate(['file' => 'required|mimes:xlsx,xls,csv']);
+        Excel::import(new PropertyImport, $request->file('file'));
+        return redirect()->route('admin.dashboard')->with('success', 'Data berhasil diimport!');
+    }
+
+    public function downloadTemplate()
+    {
+        $headers = [
+    'nama_gedung',
+    'area_id',
+    'alamat',
+    'luas_tanah',
+    'luas_gedung',
+    'status_tanah',
+    'penggunaan_saat_ini',
+    'properti_sekitar',
+    'lebar_jalan',
+    'potensi_pengembangan',
+    'jarak_pusat_kota',
+    'titik_koordinat',
+    'space_idle_gedung',
+    'fasilitas'
+];
+
+        $callback = function() use ($headers) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="template_property.csv"',
+        ]);
     }
 }

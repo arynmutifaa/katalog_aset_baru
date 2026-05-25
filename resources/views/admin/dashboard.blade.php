@@ -72,19 +72,14 @@
         .main::before {
             content: "";
             position: absolute;
-
             top: 100%;
             left: 50%;
             transform: translate(-50%, -50%);
-
             width: 1700px;
             height: 1700px;
-
             background: url('/images/logo.png') no-repeat center;
             background-size: contain;
-
             opacity: 0.05;
-
             z-index: 0;
             pointer-events: none;
         }
@@ -145,7 +140,6 @@
             box-shadow: 0 12px 25px rgba(227, 6, 19, 0.35);
         }
 
-
         .cards {
             display: flex;
             gap: 20px;
@@ -182,6 +176,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 35px;
+            align-items: stretch;
         }
 
         .property-card {
@@ -190,6 +185,9 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
             transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .property-card:hover {
@@ -210,6 +208,7 @@
 
         .property-card .info {
             padding: 20px;
+            flex: 1;
         }
 
         .property-card h4 {
@@ -222,10 +221,7 @@
             color: #777;
         }
 
-        /* ===== RESPONSIVE ===== */
-
         @media(max-width:900px) {
-
             .sidebar {
                 display: none;
             }
@@ -238,11 +234,9 @@
             .cards {
                 flex-direction: column;
             }
-
         }
 
         @media(max-width:768px) {
-
             .navbar {
                 flex-direction: row;
                 justify-content: center;
@@ -263,7 +257,6 @@
                 position: static;
                 margin-left: 0;
             }
-
         }
     </style>
 
@@ -277,45 +270,22 @@
 
         <form method="GET" action="{{ route('admin.dashboard') }}">
 
-            <input type="text" name="search" placeholder="Mencari lokasi...">
+            <input type="text" name="search" placeholder="Mencari lokasi..." value="{{ request('search') }}">
 
-<select name="daerah">
-
-<option value="">Semua Daerah</option>
-
-<option value="pasuruan" {{ request('daerah')=='pasuruan' ? 'selected' : '' }}>
-Pasuruan
-</option>
-
-<option value="jember" {{ request('daerah')=='jember' ? 'selected' : '' }}>
-Jember
-</option>
-
-<option value="banyuwangi" {{ request('daerah')=='banyuwangi' ? 'selected' : '' }}>
-Banyuwangi
-</option>
-
-<option value="situbondo" {{ request('daerah')=='situbondo' ? 'selected' : '' }}>
-Situbondo & Bondowoso
-</option>
-
-<option value="lumajang" {{ request('daerah')=='lumajang' ? 'selected' : '' }}>
-Lumajang
-</option>
-
-<option value="probolinggo" {{ request('daerah')=='probolinggo' ? 'selected' : '' }}>
-Probolinggo
-</option>
-
-<option value="sidoarjo" {{ request('daerah')=='sidoarjo' ? 'selected' : '' }}>
-Sidoarjo
-</option>
-
-<option value="jombang" {{ request('daerah')=='jombang' ? 'selected' : '' }}>
-Jombang & Mojokerto
-</option>
-
-</select>
+            <select name="daerah">
+                <option value="">Semua Daerah</option>
+                <option value="pasuruan" {{ request('daerah') == 'pasuruan' ? 'selected' : '' }}>Pasuruan</option>
+                <option value="jember" {{ request('daerah') == 'jember' ? 'selected' : '' }}>Jember</option>
+                <option value="banyuwangi" {{ request('daerah') == 'banyuwangi' ? 'selected' : '' }}>Banyuwangi</option>
+                <option value="situbondo_bondowoso" {{ request('daerah') == 'situbondo_bondowoso' ? 'selected' : '' }}>
+                    Situbondo & Bondowoso</option>
+                <option value="lumajang" {{ request('daerah') == 'lumajang' ? 'selected' : '' }}>Lumajang</option>
+                <option value="probolinggo" {{ request('daerah') == 'probolinggo' ? 'selected' : '' }}>Probolinggo
+                </option>
+                <option value="sidoarjo" {{ request('daerah') == 'sidoarjo' ? 'selected' : '' }}>Sidoarjo</option>
+                <option value="jombang_mojokerto" {{ request('daerah') == 'jombang_mojokerto' ? 'selected' : '' }}>
+                    Jombang & Mojokerto</option>
+            </select>
 
             <button type="submit">Cari</button>
 
@@ -346,46 +316,55 @@ Jombang & Mojokerto
 
         </div>
 
-<div class="cards">
+        <div class="cards">
 
-    <div class="card">
-        <h4>Gedung Tersedia</h4>
-        <h2>{{ $properties->where('area_id','bangunan')->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Gedung Tersedia</h4>
+                <h2>{{ $properties->where('area_id', 'bangunan')->count() }}</h2>
+            </div>
 
-    <div class="card">
-        <h4>Total Tanah Kosong</h4>
-        <h2>{{ $properties->where('area_id','tanah_kosong')->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Total Tanah Kosong</h4>
+                <h2>{{ $properties->where('area_id', 'tanah_kosong')->count() }}</h2>
+            </div>
 
-    <div class="card">
-        <h4>Total Property</h4>
-        <h2>{{ $properties->count() }}</h2>
-    </div>
+            <div class="card">
+                <h4>Total Property</h4>
+                <h2>{{ $properties->filter(fn($p) => $p->nama_gedung || $p->alamat)->count() }}</h2>
+            </div>
 
-</div>
+        </div>
 
         <div class="property-grid">
 
             @foreach ($properties as $property)
-                <a href="{{ route('admin.property.show', $property->id) }}" style="text-decoration:none;color:inherit;">
+                @if ($property->nama_gedung || $property->alamat)
+                    <a href="{{ route('admin.property.show', $property->id) }}"
+                        style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
 
-                    <div class="property-card">
 
-                        @php $images = json_decode($property->gambar); @endphp
+                        <div class="property-card">
 
-                        @if ($images && count($images) > 0)
-                            <img src="{{ asset('storage/' . $images[0]) }}">
-                        @endif
+                            @php $images = json_decode($property->gambar); @endphp
 
-                        <div class="info">
-                            <h4>{{ $property->nama_gedung }}</h4>
-                            <p>{{ $property->alamat }}</p>
+                            @if ($images && count($images) > 0)
+                                <img src="{{ asset('storage/' . $images[0]) }}">
+                            @else
+                                <div
+                                    style="width:100%;height:200px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
+                                    <span style="color:#aaa;font-size:14px;">Tidak ada foto</span>
+                                </div>
+                            @endif
+
+                            <div class="info">
+                                <h4>{{ $property->nama_gedung }}</h4>
+                                <p>{{ $property->alamat }}</p>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                </a>
+                    </a>
+                @endif
             @endforeach
 
         </div>

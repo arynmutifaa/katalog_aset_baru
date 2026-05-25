@@ -216,32 +216,12 @@
                 <td>{{ $property->penggunaan_saat_ini }}</td>
             </tr>
             <tr>
-                <td>PERUNTUKAN</td>
-                <td>{{ $property->peruntukan }}</td>
-            </tr>
-            <tr>
-                <td>BATAS LAHAN</td>
-                <td>{{ $property->batas_lahan }}</td>
-            </tr>
-            <tr>
                 <td>PROPERTI SEKITAR</td>
                 <td>{{ $property->properti_sekitar }}</td>
             </tr>
             <tr>
                 <td>LEBAR JALAN</td>
                 <td>{{ $property->lebar_jalan }}</td>
-            </tr>
-            <tr>
-                <td>BENTUK LAHAN</td>
-                <td>{{ $property->bentuk_lahan }}</td>
-            </tr>
-            <tr>
-                <td>LEBAR LAHAN</td>
-                <td>{{ $property->lebar_lahan }}</td>
-            </tr>
-            <tr>
-                <td>KEDALAMAN LAHAN</td>
-                <td>{{ $property->kedalaman_lahan }}</td>
             </tr>
             <tr>
                 <td>POTENSI PENGEMBANGAN</td>
@@ -252,12 +232,17 @@
                 <td>{{ $property->jarak_pusat_kota }}</td>
             </tr>
             <tr>
-                <td>KONDISI LAHAN</td>
-                <td>{{ $property->kondisi_lahan }}</td>
-            </tr>
-            <tr>
                 <td>TITIK KOORDINAT</td>
-                <td>{{ $property->titik_koordinat }}</td>
+                <td>
+                    @if ($property->titik_koordinat)
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ $property->titik_koordinat }}"
+                            target="_blank" style="color: #E30613; text-decoration: none; font-weight: 600;">
+                            📍 {{ $property->titik_koordinat }}
+                        </a>
+                    @else
+                        -
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>SPACE IDLE GEDUNG</td>
