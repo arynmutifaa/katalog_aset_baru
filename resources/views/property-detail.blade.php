@@ -190,7 +190,7 @@
 
         <div class="top-buttons">
             <a href="{{ route('dashboard') }}" class="btn-back">Kembali</a>
-            <a href="{{ route('property.export.pdf', $property->id) }}" class="btn-export">⬇ Export Aset</a>
+            <a href="{{ route('property.export.pdf', $property->id) }}" class="btn-export"> Export Aset</a>
         </div>
 
         <h2>{{ $property->nama_gedung }}</h2>
