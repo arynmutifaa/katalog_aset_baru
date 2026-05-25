@@ -39,6 +39,10 @@ Route::get('/dashboard', [PropertyController::class, 'index'])
 Route::get('/property/{id}', [PropertyController::class, 'show'])
     ->name('property.show');
 
+// Export PDF untuk user (publik, tanpa auth)
+Route::get('/property/{id}/export-pdf', [PropertyController::class, 'exportPdf'])
+    ->name('property.export.pdf');
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])
     ->name('login');
 
@@ -64,13 +68,19 @@ Route::middleware(['auth'])
 
         Route::get('/property/import', [AdminPropertyController::class, 'importForm'])
             ->name('property.import.form');
+
         Route::post('/property/import', [AdminPropertyController::class, 'import'])
             ->name('property.import');
+
         Route::get('/property/template', [AdminPropertyController::class, 'downloadTemplate'])
             ->name('property.template');
 
         Route::post('/property', [AdminPropertyController::class, 'store'])
             ->name('property.store');
+
+        // Export PDF untuk admin — letakkan SEBELUM route {id} agar tidak bentrok
+        Route::get('/property/{id}/export-pdf', [AdminPropertyController::class, 'exportPdf'])
+            ->name('property.export.pdf');
 
         Route::get('/property/{id}', [AdminPropertyController::class, 'show'])
             ->name('property.show');

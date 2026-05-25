@@ -60,7 +60,6 @@
             margin-bottom: 25px;
             width: 100%;
             max-width: 1000px;
-            /* bikin slider lebih besar */
             margin: auto;
         }
 
@@ -69,16 +68,38 @@
             border-radius: 12px;
         }
 
+        .top-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
         .btn-back {
             display: inline-block;
-            margin-bottom: 20px;
             padding: 8px 15px;
             border-radius: 8px;
             background: #6c757d;
             color: white;
             text-decoration: none;
             font-size: 14px;
+        }
+
+        .btn-export {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: #E30613;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-export:hover {
+            background: #b8050f;
+        }
+
+        .btn-back:hover {
+            background: #5a6268;
         }
 
         @media (max-width:768px) {
@@ -94,7 +115,6 @@
                 font-size: 14px;
             }
         }
-
 
         .slider {
             width: 100%;
@@ -168,7 +188,10 @@
 
     <div class="container">
 
-        <a href="{{ route('dashboard') }}" class="btn-back">Kembali</a>
+        <div class="top-buttons">
+            <a href="{{ route('dashboard') }}" class="btn-back">Kembali</a>
+            <a href="{{ route('property.export.pdf', $property->id) }}" class="btn-export">⬇ Export Aset</a>
+        </div>
 
         <h2>{{ $property->nama_gedung }}</h2>
         <div class="subtitle">Detail Informasi Aset Gedung</div>

@@ -6,6 +6,7 @@ use App\Models\PropertyDetail;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PropertyImport;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropertyController extends Controller
 {
@@ -157,4 +158,15 @@ class PropertyController extends Controller
             'Content-Disposition' => 'attachment; filename="template_property.csv"',
         ]);
     }
+    public function exportPdf($id)
+{
+    $property = PropertyDetail::findOrFail($id);
+
+    $pdf = Pdf::loadView('admin.property.export-pdf', compact('property'))
+        ->setPaper('a4', 'portrait');
+
+    $filename = 'aset-' . str($property->nama_gedung)->slug() . '.pdf';
+
+    return $pdf->download($filename);
+}
 }
