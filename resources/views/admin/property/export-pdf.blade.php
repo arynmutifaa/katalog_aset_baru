@@ -48,14 +48,24 @@
     @endphp
 
     @if (count($images) > 0)
+        @php
+            $total = count($images);
+            if ($total <= 2) {
+                $cols = $total;
+            } elseif ($total % 2 === 0 && $total % 3 !== 0) {
+                $cols = 2;
+            } else {
+                $cols = 3;
+            }
+            $colWidth = round(100 / $cols);
+        @endphp
         <div class="images">
-            {{-- Semua foto grid 3 kolom, kotak persegi --}}
             <table width="100%" style="border-collapse:collapse;">
-                @foreach (array_chunk($images, 3) as $row)
+                @foreach (array_chunk($images, $cols) as $row)
                     <tr>
                         @foreach ($row as $img)
                             @php $imgPath = public_path('storage/' . $img); @endphp
-                            <td width="33%" style="padding: 2px;">
+                            <td width="{{ $colWidth }}%" style="padding: 2px;">
                                 <div style="
                                     width: 100%;
                                     height: 80px;
@@ -67,11 +77,6 @@
                                 "></div>
                             </td>
                         @endforeach
-                        @for ($i = count($row); $i < 3; $i++)
-                            <td width="33%" style="padding: 2px;">
-                                <div style="width:100%; height:80px; background:#f0f0f0; border-radius:3px;"></div>
-                            </td>
-                        @endfor
                     </tr>
                 @endforeach
             </table>
