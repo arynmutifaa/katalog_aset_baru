@@ -68,7 +68,7 @@
                             <td width="{{ $colWidth }}%" style="padding: 2px;">
                                 <div style="
                                     width: 100%;
-                                    height: 80px;
+                                    height: 144px;
                                     background-image: url('{{ $imgPath }}');
                                     background-size: cover;
                                     background-position: center;
