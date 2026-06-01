@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\LoginController;
@@ -35,11 +36,11 @@ Route::get('/gallery', function () {
 
 Route::get('/dashboard', [PropertyController::class, 'index'])
     ->name('dashboard');
-
+Route::get('/property/export-all-pdf', [PropertyController::class, 'exportAllPdf'])
+    ->name('property.export.all.pdf');
 Route::get('/property/{id}', [PropertyController::class, 'show'])
     ->name('property.show');
 
-// Export PDF untuk user (publik, tanpa auth)
 Route::get('/property/{id}/export-pdf', [PropertyController::class, 'exportPdf'])
     ->name('property.export.pdf');
 
@@ -78,7 +79,6 @@ Route::middleware(['auth'])
         Route::post('/property', [AdminPropertyController::class, 'store'])
             ->name('property.store');
 
-        // Export PDF untuk admin — letakkan SEBELUM route {id} agar tidak bentrok
         Route::get('/property/{id}/export-pdf', [AdminPropertyController::class, 'exportPdf'])
             ->name('property.export.pdf');
 

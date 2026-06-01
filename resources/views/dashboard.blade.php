@@ -324,7 +324,8 @@
         <div class="property-grid">
             @foreach ($properties as $property)
                 @if ($property->nama_gedung || $property->alamat)
-                    <a href="{{ route('property.show', $property->id) }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
+                    <a href="{{ route('property.show', $property->id) }}"
+                        style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
                         <div class="property-card">
                             @php $images = json_decode($property->gambar); @endphp
 
@@ -345,9 +346,33 @@
                     </a>
                 @endif
             @endforeach
-        </div>
-    </div>
 
+        </div>
+
+    </div>
+    <a href="{{ route('property.export.all.pdf') }}"
+        style="
+           position: fixed;
+           bottom: 30px;
+           right: 30px;
+           background: linear-gradient(135deg, #E30613, #b8040f);
+           color: white;
+           padding: 14px 22px;
+           border-radius: 14px;
+           text-decoration: none;
+           font-size: 13px;
+           font-weight: 600;
+           box-shadow: 0 8px 25px rgba(227, 6, 19, 0.4);
+           z-index: 999;
+           transition: 0.3s;
+       "
+        onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        Export All Asset
+    </a>
+
+</body>
+
+</html>
 </body>
 
 </html>

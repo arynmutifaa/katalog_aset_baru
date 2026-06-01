@@ -235,7 +235,26 @@
                 flex-direction: column;
             }
         }
+.floating-export {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: linear-gradient(135deg, #E30613, #b8040f);
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(227, 6, 19, 0.35);
+    transition: 0.3s;
+}
 
+.floating-export:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(227, 6, 19, 0.45);
+}
         @media(max-width:768px) {
             .navbar {
                 flex-direction: row;
@@ -370,7 +389,13 @@
         </div>
 
     </div>
+<a href="{{ route('property.export.all.pdf') }}" class="floating-export">
+     Export All Asset
+</a>
 
+</body>
+
+</html>
 </body>
 
 </html>
