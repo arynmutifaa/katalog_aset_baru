@@ -15,28 +15,28 @@ class PropertyController extends Controller
     {
         $query = PropertyDetail::query();
 
-       if ($request->search) {
-    $query->where(function ($q) use ($request) {
-        $q->where('nama_gedung', 'like', '%' . $request->search . '%')
-          ->orWhere('alamat', 'like', '%' . $request->search . '%');
-    });
-}
+        if ($request->search) {
+            $query->where(function ($q) use ($request) {
+                $q->where('nama_gedung', 'like', '%' . $request->search . '%')
+                    ->orWhere('alamat', 'like', '%' . $request->search . '%');
+            });
+        }
 
-       if ($request->daerah) {
-    if ($request->daerah === 'situbondo_bondowoso') {
-        $query->where(function ($q) {
-            $q->where('alamat', 'like', '%situbondo%')
-              ->orWhere('alamat', 'like', '%bondowoso%');
-        });
-    } elseif ($request->daerah === 'jombang_mojokerto') {
-        $query->where(function ($q) {
-            $q->where('alamat', 'like', '%jombang%')
-              ->orWhere('alamat', 'like', '%mojokerto%');
-        });
-    } else {
-        $query->where('alamat', 'like', '%' . $request->daerah . '%');
-    }
-}
+        if ($request->daerah) {
+            if ($request->daerah === 'situbondo_bondowoso') {
+                $query->where(function ($q) {
+                    $q->where('alamat', 'like', '%situbondo%')
+                        ->orWhere('alamat', 'like', '%bondowoso%');
+                });
+            } elseif ($request->daerah === 'jombang_mojokerto') {
+                $query->where(function ($q) {
+                    $q->where('alamat', 'like', '%jombang%')
+                        ->orWhere('alamat', 'like', '%mojokerto%');
+                });
+            } else {
+                $query->where('alamat', 'like', '%' . $request->daerah . '%');
+            }
+        }
 
         $properties = $query->get();
 
@@ -52,15 +52,28 @@ class PropertyController extends Controller
     {
         return view('property.import');
     }
-public function exportPdf($id)
-{
-    $property = PropertyDetail::findOrFail($id);
+    public function exportPdf($id)
+    {
+        $property = PropertyDetail::findOrFail($id);
 
-    $pdf = Pdf::loadView('admin.property.export-pdf', compact('property'))
-        ->setPaper('a4', 'portrait');
+        $pdf = Pdf::loadView('admin.property.export-pdf', compact('property'))
+            ->setPaper('a4', 'portrait');
 
-    $filename = 'aset-' . str($property->nama_gedung)->slug() . '.pdf';
+        $filename = 'aset-' . str($property->nama_gedung)->slug() . '.pdf';
 
-    return $pdf->download($filename);
-}
+        return $pdf->download($filename);
+    }
+    public function exportAllPdf()
+    {
+        $properties = PropertyDetail::all();
+
+        $pdf = Pdf::loadView('admin.property.export-all-pdf', compact('properties'))
+            ->setPaper('a4', 'portrait')
+            ->setOption([
+                'isRemoteEnabled' => true,
+                'isHtml5ParserEnabled' => true,
+            ]);
+
+        return $pdf->download('katalog-semua-aset-' . date('Ymd') . '.pdf');
+    }
 }

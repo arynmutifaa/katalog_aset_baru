@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Export Aset - {{ $property->nama_gedung }}</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'DejaVu Sans', sans-serif;
             font-size: 10px;
             color: #222;
             padding: 15px 20px;
         }
+
         .header {
             margin-bottom: 8px;
             border-bottom: 3px solid #E30613;
             padding-bottom: 8px;
         }
-        .header h1 { font-size: 14px; color: #E30613; }
-        .header p { font-size: 9px; color: #777; margin-top: 2px; }
-        h2 { font-size: 12px; color: #E30613; margin-bottom: 2px; margin-top: 8px; }
-        .subtitle { font-size: 9px; color: #777; margin-bottom: 8px; }
-        .images { margin-bottom: 8px; }
-        table.info { width: 100%; border-collapse: collapse; margin-top: 6px; }
-        table.info td { border: 1px solid #ddd; padding: 4px 8px; }
-        table.info td:first-child { font-weight: bold; background: #f8f8f8; width: 40%; }
-        .footer { margin-top: 8px; font-size: 8px; color: #aaa; text-align: right; }
+
+        .header h1 {
+            font-size: 14px;
+            color: #E30613;
+        }
+
+        .header p {
+            font-size: 9px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        h2 {
+            font-size: 12px;
+            color: #E30613;
+            margin-bottom: 2px;
+            margin-top: 8px;
+        }
+
+        .subtitle {
+            font-size: 9px;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .images {
+            margin-bottom: 8px;
+        }
+
+        table.info {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+        }
+
+        table.info td {
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+        }
+
+        table.info td:first-child {
+            font-weight: bold;
+            background: #f8f8f8;
+            width: 40%;
+        }
+
+        .footer {
+            margin-top: 8px;
+            font-size: 8px;
+            color: #aaa;
+            text-align: right;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="header">
         <h1>Katalog Aset Gedung</h1>
-        <p>Dokumen ini digenerate secara otomatis pada {{ date('d M Y, H:i') }} WIB</p>
+        <p>
+            Dokumen ini digenerate secara otomatis pada
+            {{ now('Asia/Jakarta')->format('d M Y, H:i') }} WIB
+        </p>
     </div>
 
     <h2>{{ $property->nama_gedung }}</h2>
@@ -40,9 +94,7 @@
     @php
         $images = [];
         if ($property->gambar) {
-            $images = is_array($property->gambar)
-                ? $property->gambar
-                : json_decode($property->gambar, true);
+            $images = is_array($property->gambar) ? $property->gambar : json_decode($property->gambar, true);
             $images = $images ?? [];
         }
     @endphp
@@ -66,7 +118,8 @@
                         @foreach ($row as $img)
                             @php $imgPath = public_path('storage/' . $img); @endphp
                             <td width="{{ $colWidth }}%" style="padding: 2px;">
-                                <div style="
+                                <div
+                                    style="
                                     width: 100%;
                                     height: 144px;
                                     background-image: url('{{ $imgPath }}');
@@ -74,7 +127,8 @@
                                     background-position: center;
                                     background-repeat: no-repeat;
                                     border-radius: 3px;
-                                "></div>
+                                ">
+                                </div>
                             </td>
                         @endforeach
                     </tr>
@@ -84,16 +138,46 @@
     @endif
 
     <table class="info">
-        <tr><td>BAGUNAN/TANAH KOSONG</td><td>{{ $property->area_id ?? '-' }}</td></tr>
-        <tr><td>ALAMAT</td><td>{{ $property->alamat ?? '-' }}</td></tr>
-        <tr><td>LUAS TANAH</td><td>{{ $property->luas_tanah ?? '-' }}</td></tr>
-        <tr><td>LUAS GEDUNG</td><td>{{ $property->luas_gedung ?? '-' }}</td></tr>
-        <tr><td>STATUS TANAH</td><td>{{ $property->status_tanah ?? '-' }}</td></tr>
-        <tr><td>PENGGUNAAN SAAT INI</td><td>{{ $property->penggunaan_saat_ini ?? '-' }}</td></tr>
-        <tr><td>PROPERTI SEKITAR</td><td>{{ $property->properti_sekitar ?? '-' }}</td></tr>
-        <tr><td>LEBAR JALAN</td><td>{{ $property->lebar_jalan ?? '-' }}</td></tr>
-        <tr><td>POTENSI PENGEMBANGAN</td><td>{{ $property->potensi_pengembangan ?? '-' }}</td></tr>
-        <tr><td>JARAK KE PUSAT KOTA</td><td>{{ $property->jarak_pusat_kota ?? '-' }}</td></tr>
+        <tr>
+            <td>BAGUNAN/TANAH KOSONG</td>
+            <td>{{ $property->area_id ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>ALAMAT</td>
+            <td>{{ $property->alamat ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>LUAS TANAH</td>
+            <td>{{ $property->luas_tanah ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>LUAS GEDUNG</td>
+            <td>{{ $property->luas_gedung ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>STATUS TANAH</td>
+            <td>{{ $property->status_tanah ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>PENGGUNAAN SAAT INI</td>
+            <td>{{ $property->penggunaan_saat_ini ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>PROPERTI SEKITAR</td>
+            <td>{{ $property->properti_sekitar ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>LEBAR JALAN</td>
+            <td>{{ $property->lebar_jalan ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>POTENSI PENGEMBANGAN</td>
+            <td>{{ $property->potensi_pengembangan ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>JARAK KE PUSAT KOTA</td>
+            <td>{{ $property->jarak_pusat_kota ?? '-' }}</td>
+        </tr>
         <tr>
             <td>TITIK KOORDINAT</td>
             <td>
@@ -105,11 +189,14 @@
                     <table style="border:none; width:auto; border-collapse:collapse;">
                         <tr>
                             <td style="border:none; padding:0; vertical-align:middle; text-align:center;">
-                                <img src="data:image/svg+xml;base64,{{ base64_encode($qr) }}" width="55" height="55">
+                                <img src="data:image/svg+xml;base64,{{ base64_encode($qr) }}" width="55"
+                                    height="55">
                                 <br>
-                                <span style="font-size:7px; color:#E30613; font-weight:bold;">Scan untuk melihat lokasi</span>
+                                <span style="font-size:7px; color:#E30613; font-weight:bold;">Scan untuk melihat
+                                    lokasi</span>
                             </td>
-                            <td style="border:none; padding:0 0 0 8px; vertical-align:middle; font-size:9px; color:#555;">
+                            <td
+                                style="border:none; padding:0 0 0 8px; vertical-align:middle; font-size:9px; color:#555;">
                                 {{ $property->titik_koordinat }}
                             </td>
                         </tr>
@@ -119,11 +206,21 @@
                 @endif
             </td>
         </tr>
-        <tr><td>SPACE IDLE GEDUNG</td><td>{{ $property->space_idle_gedung ?? '-' }}</td></tr>
-        <tr><td>FASILITAS</td><td>{{ $property->fasilitas ?? '-' }}</td></tr>
+        <tr>
+            <td>SPACE IDLE GEDUNG</td>
+            <td>{{ $property->space_idle_gedung ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>FASILITAS</td>
+            <td>{{ $property->fasilitas ?? '-' }}</td>
+        </tr>
     </table>
 
-    <div class="footer">Katalog Aset &mdash; Dicetak: {{ date('d/m/Y H:i') }}</div>
+    <div class="footer">
+        Katalog Aset &mdash; Dicetak:
+        {{ now('Asia/Jakarta')->format('d/m/Y H:i') }} WIB
+    </div>
 
 </body>
+
 </html>
